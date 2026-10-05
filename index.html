@@ -137,7 +137,7 @@ body::after{
 .hero-video-el{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
 .hero-media::after{content:"";position:absolute;inset:0;
   background:radial-gradient(120% 100% at 50% 30%,transparent 30%,rgba(11, 14, 20, 0.55) 100%),
-             linear-gradient(180deg,rgba(11, 14, 20, 0.35),rgba(11, 14, 20, 0.15) 40%,rgba(11, 14, 20, 0.9))}
+            linear-gradient(180deg,rgba(11, 14, 20, 0.35),rgba(11, 14, 20, 0.15) 40%,rgba(11, 14, 20, 0.9))}
 .hero-inner{position:relative;z-index:2;text-align:center;padding:0 24px}
 .hero-mark{width:min(74vw,540px);height:auto;filter:drop-shadow(0 2px 40px rgba(0,0,0,.5));margin:0 auto}
 .hero-sub{margin-top:22px;font-size:14px;letter-spacing:.28em;color:var(--faint);text-transform:uppercase}
@@ -167,15 +167,14 @@ body::after{
 .social svg{width:23px;height:23px;display:block}
 .social:hover{opacity:1;transform:translateY(-3px)}
 
-.feature{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);align-items:center;padding:clamp(36px,6vh,80px) var(--pad)}
-.feature.reverse .feature-media{order:2}
-.feature-media{position:relative;display:block;aspect-ratio:4/3;overflow:hidden}
-.feature-media .ph{position:absolute;inset:0}
-.feature-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
-.feature-media:hover .feature-img{transform:scale(1.04)}
-.feature-label{display:block;margin-bottom:18px; font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.feature-body h3{font-family:var(--sans);font-weight:700;font-size:clamp(28px,4vw,50px);line-height:1.02;letter-spacing:-.032em;margin-bottom:20px}
-.feature-body p{color:rgba(238,238,237,.5);font-size:15px;line-height:1.6;max-width:42ch;margin-bottom:30px}
+/* Full-screen horizontal banner section style (matching intro) */
+.feature{position:relative;overflow:hidden;padding:clamp(90px,14vh,165px) var(--pad) clamp(74px,10vh,120px);text-align:center;border-bottom:1px solid var(--line)}
+.feature-bg{position:absolute;inset:0;z-index:0;background:#0B0E14 center/cover no-repeat; opacity: 0.3;}
+.feature-content{position:relative;z-index:1;text-shadow:0 2px 32px rgba(0,0,0,.8),0 1px 4px rgba(0,0,0,.5)}
+.feature-label{display:block;margin-bottom:22px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.feature-body h3{font-family:var(--sans);font-style:italic;font-weight:400;font-size:clamp(32px,5.5vw,66px);line-height:1.08;letter-spacing:-.02em;margin:0 auto 28px;max-width:18ch}
+.feature-h{font-family:var(--sans);font-style:italic;font-weight:400;font-size:clamp(32px,5.5vw,66px);line-height:1.08;letter-spacing:-.02em;margin:0 auto 28px;max-width:18ch}
+.feature-p{color:var(--faint);font-size:clamp(16px,2vw,20px);max-width:52ch;margin:0 auto 34px}
 
 /* =================== PORTFOLIO =================== */
 .pf-tabs{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,40px);padding:22px var(--pad) 0;position:sticky;top:76px;z-index:40;
@@ -248,9 +247,6 @@ body::after{
   .page-head{padding:120px var(--pad) 30px}
   .pf-grid{columns:2}
   .contact-wrap{grid-template-columns:1fr}
-  .feature{grid-template-columns:1fr;gap:20px}
-  .feature.reverse .feature-media{order:0}
-  .feature-media{aspect-ratio:3/2}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:560px){
@@ -289,61 +285,40 @@ body::after{
   </section>
 
   <section class="intro reveal in">
-    <div class="intro-bg" id="introBgEl" style="background-image: url(&quot;/assets/images/intro-bg.jpg&quot;);"></div>
+    <div class="intro-bg" id="introBgEl" style="background-image: url('/assets/images/intro-bg.jpg');"></div>
     <div class="intro-content">
       <span class="eyebrow" id="introEyebrowEl">Photography &amp; Film</span>
-      <h2 class="intro-h" id="introHeadingEl">everything matters, nothing's important</h2>
+      <h2 class="intro-h" id="introHeadingEl">capturing light and visual narratives</h2>
       <p class="intro-p" id="introTextEl">Capturing visual moments and telling stories through cinematic composition.</p>
-      <div class="socials" id="socialLinksEl"><a class="social" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17-.21-.55-.47-.94-.88-1.35-.41-.41-.8-.67-1.35-.88-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07zm0 2.76a5.46 5.46 0 110 10.92 5.46 5.46 0 010-10.92zm0 9a3.54 3.54 0 100-7.08 3.54 3.54 0 000 7.08zm5.68-9.15a1.27 1.27 0 11-2.55 0 1.27 1.27 0 012.55 0z"></path></svg></a></div>
+      <div class="socials" id="socialLinksEl">
+        <a class="social" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17-.21-.55-.47-.94-.88-1.35-.41-.41-.8-.67-1.35-.88-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07zm0 2.76a5.46 5.46 0 110 10.92 5.46 5.46 0 010-10.92zm0 9a3.54 3.54 0 100-7.08 3.54 3.54 0 000 7.08zm5.68-9.15a1.27 1.27 0 11-2.55 0 1.27 1.27 0 012.55 0z"></path></svg></a>
+      </div>
     </div>
   </section>
 
-  <!-- Feature callouts on Home (Linking to Portfolio and Contact) -->
-  <div id="homeFeatures"><section class="feature reveal in">
-    <a class="feature-media" href="#portfolio" data-nav="">
-      <div class="ph h1" data-label="Portfolio"></div>
-      <img class="feature-img" src="/assets/images/feat-portfolio.jpg" alt="Portfolio" onerror="this.style.display='none'" style="display: none;">
-    </a>
-    <div class="feature-body">
-      <span class="feature-label">Selected Work</span>
-      <h3>Portfolio</h3>
-      <p>Browse full collections across landscape, street, and creative photography.</p>
-      <a class="cta" href="#portfolio" data-nav="">Explore</a>
-    </div></section><section class="feature reveal reverse in">
-    <a class="feature-media" href="#contact" data-nav="">
-      <div class="ph h2" data-label="Get in Touch"></div>
-      <img class="feature-img" src="/assets/images/feat-contact.jpg" alt="Get in Touch" onerror="this.style.display='none'" style="display: none;">
-    </a>
-    <div class="feature-body">
-      <span class="feature-label">Commission &amp; Licensing</span>
-      <h3>Get in Touch</h3>
-      <p>Available for commercial shoots, editorial assignments, and creative collaborations.</p>
-      <a class="cta" href="#contact" data-nav="">Explore</a>
-    </div></section></div>
-  <div id="footerHome">
-<footer class="site-footer">
-  <div class="foot-grid">
-    <div>
-      <div class="foot-brand"><img class="foot-brand-logo" src="/assets/images/logo-nav.png" alt="Your Brand"></div>
-      <span class="foot-handle">@yourhandle</span>
-    </div>
-    <div class="foot-col">
-      <h4>Navigation</h4>
-      <a href="#home" data-nav="">Home</a>
-      <a href="#portfolio" data-nav="">Portfolio</a>
-      <a href="#contact" data-nav="">Contact</a>
-    </div>
-    <div class="foot-col">
-      <h4>Connect</h4>
-      <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
-      <a href="#contact" data-nav="">Direct Message</a>
-    </div>
+  <!-- Full-screen banner sections for Portfolio & Contact -->
+  <div id="homeFeatures">
+    <section class="feature reveal in">
+      <div class="feature-bg" style="background-image: url('/assets/images/feat-portfolio.jpg');"></div>
+      <div class="feature-content">
+        <span class="feature-label">Selected Work</span>
+        <h3 class="feature-h">Portfolio</h3>
+        <p class="feature-p">Browse full collections across landscape, street, and creative photography.</p>
+        <a class="cta" href="#portfolio" data-nav="">Explore Portfolio</a>
+      </div>
+    </section>
+    <section class="feature reveal in">
+      <div class="feature-bg" style="background-image: url('/assets/images/feat-contact.jpg');"></div>
+      <div class="feature-content">
+        <span class="feature-label">Commission &amp; Licensing</span>
+        <h3 class="feature-h">Get in Touch</h3>
+        <p class="feature-p">Available for commercial shoots, editorial assignments, and creative collaborations.</p>
+        <a class="cta" href="#contact" data-nav="">Contact Me</a>
+      </div>
+    </section>
   </div>
-  <div class="foot-base">
-    <span>© 2026 Your Name · Studio</span>
-    <span>Your City, Country</span>
-  </div>
-</footer></div>
+
+  <div id="footerHome"></div>
 </main>
 
 <!-- PORTFOLIO -->
@@ -353,32 +328,9 @@ body::after{
     <h1>Portfolio</h1>
     <p>A showcase of the world as I capture it. Tap any frame to view it larger.</p>
   </header>
-  <div class="pf-tabs" id="pfTabs"><button class="pf-tab active" data-cat="landscape">Landscape</button><button class="pf-tab" data-cat="street">Street</button><button class="pf-tab" data-cat="creative">Creative</button></div>
-  <div class="pf-gallery" id="pfGallery"><div class="pf-set active" id="set-landscape"><div class="pf-sectionhead"><div class="pf-sectionhead-inner"><span class="eyebrow">Portfolio</span><h2>Landscape</h2><p>Travel and landscape, from mountaintops to coastlines.</p></div></div><div class="pf-grid"><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/landscape-01.jpg" loading="lazy"></div></div><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/landscape-02.jpg" loading="lazy"></div></div></div></div><div class="pf-set" id="set-street"><div class="pf-sectionhead"><div class="pf-sectionhead-inner"><span class="eyebrow">Portfolio</span><h2>Street</h2><p>Light, people, and fleeting moments in the city.</p></div></div><div class="pf-grid"><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/street-01.jpg" loading="lazy"></div></div><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/street-02.jpg" loading="lazy"></div></div></div></div><div class="pf-set" id="set-creative"><div class="pf-sectionhead"><div class="pf-sectionhead-inner"><span class="eyebrow">Portfolio</span><h2>Creative</h2><p>Experiments, concepts, and personal fine-art work.</p></div></div><div class="pf-grid"><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/creative-01.jpg" loading="lazy"></div></div></div></div></div>
-  <div id="footerPortfolio">
-<footer class="site-footer">
-  <div class="foot-grid">
-    <div>
-      <div class="foot-brand"><img class="foot-brand-logo" src="/assets/images/logo-nav.png" alt="Your Brand"></div>
-      <span class="foot-handle">@yourhandle</span>
-    </div>
-    <div class="foot-col">
-      <h4>Navigation</h4>
-      <a href="#home" data-nav="">Home</a>
-      <a href="#portfolio" data-nav="">Portfolio</a>
-      <a href="#contact" data-nav="">Contact</a>
-    </div>
-    <div class="foot-col">
-      <h4>Connect</h4>
-      <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
-      <a href="#contact" data-nav="">Direct Message</a>
-    </div>
-  </div>
-  <div class="foot-base">
-    <span>© 2026 Your Name · Studio</span>
-    <span>Your City, Country</span>
-  </div>
-</footer></div>
+  <div class="pf-tabs" id="pfTabs"></div>
+  <div class="pf-gallery" id="pfGallery"></div>
+  <div id="footerPortfolio"></div>
 </main>
 
 <!-- CONTACT -->
@@ -405,30 +357,7 @@ body::after{
       <a id="contactLocationEl">Your City, Country</a>
     </div>
   </div>
-  <div id="footerContact">
-<footer class="site-footer">
-  <div class="foot-grid">
-    <div>
-      <div class="foot-brand"><img class="foot-brand-logo" src="/assets/images/logo-nav.png" alt="Your Brand"></div>
-      <span class="foot-handle">@yourhandle</span>
-    </div>
-    <div class="foot-col">
-      <h4>Navigation</h4>
-      <a href="#home" data-nav="">Home</a>
-      <a href="#portfolio" data-nav="">Portfolio</a>
-      <a href="#contact" data-nav="">Contact</a>
-    </div>
-    <div class="foot-col">
-      <h4>Connect</h4>
-      <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
-      <a href="#contact" data-nav="">Direct Message</a>
-    </div>
-  </div>
-  <div class="foot-base">
-    <span>© 2026 Your Name · Studio</span>
-    <span>Your City, Country</span>
-  </div>
-</footer></div>
+  <div id="footerContact"></div>
 </main>
 
 <!-- LIGHTBOX -->
@@ -439,9 +368,6 @@ body::after{
   <button class="lb-nav next" id="lbNext" aria-label="Next">›</button>
 </div>
 
-<!-- ===============================================================
-     CONFIG: EASY SITE MAINTENANCE FOR CLOUDFLARE PAGES
-================================================================ -->
 <script>
 const CONFIG = {
   brandName: "Your Brand",
@@ -450,41 +376,35 @@ const CONFIG = {
   location: "Your City, Country",
   footerText: "Your Name · Studio",
 
-  // 1. NAV BAR LOGO
   navLogo: {
-    logoType: "image", // Options: "image" (wordmark/symbol), "avatar-text", or "text"
+    logoType: "image",
     logoSrc: "/assets/images/logo-nav.png", 
     avatarSrc: "/assets/images/avatar.jpg",
     textLabel: "Your Brand" 
   },
 
-  // 2. HERO CENTER LOGO
   heroLogo: {
     useImage: true, 
     imageSrc: "/assets/images/logo-hero.png"
   },
 
   heroSubtext: "Photography & Film",
-  heroReelVideo: "/assets/hero.mp4", // Set relative path to .mp4 if you want a looping background video
+  heroReelVideo: "/assets/hero.mp4",
 
-  // Intro section
   introBgImage: "/assets/images/intro-bg.jpg",
   introEyebrow: "Photography & Film",
-  introHeading: "everything matters, nothing's important",
+  introHeading: "capturing light and visual narratives",
   introText: "Capturing visual moments and telling stories through cinematic composition.",
   
-  // Socials
   socials: [
     { name: 'Instagram', url: 'https://instagram.com/', iconPath: 'M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17-.21-.55-.47-.94-.88-1.35-.41-.41-.8-.67-1.35-.88-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07zm0 2.76a5.46 5.46 0 110 10.92 5.46 5.46 0 010-10.92zm0 9a3.54 3.54 0 100-7.08 3.54 3.54 0 000 7.08zm5.68-9.15a1.27 1.27 0 11-2.55 0 1.27 1.27 0 012.55 0z' }
   ],
 
-  // Home Features (Streamlined for Portfolio & Contact)
   features: [
     { title: "Portfolio", label: "Selected Work", desc: "Browse full collections across landscape, street, and creative photography.", img: "/assets/images/feat-portfolio.jpg", link: "#portfolio" },
-    { title: "Get in Touch", label: "Commission & Licensing", desc: "Available for commercial shoots, editorial assignments, and creative collaborations.", img: "/assets/images/feat-contact.jpg", link: "#contact", reverse: true }
+    { title: "Get in Touch", label: "Commission & Licensing", desc: "Available for commercial shoots, editorial assignments, and creative collaborations.", img: "/assets/images/feat-contact.jpg", link: "#contact" }
   ],
 
-  // Portfolio Categories & Images
   portfolioCategories: [
     { id: 'landscape', name: 'Landscape', desc: 'Travel and landscape, from mountaintops to coastlines.' },
     { id: 'street', name: 'Street', desc: 'Light, people, and fleeting moments in the city.' },
@@ -499,12 +419,8 @@ const CONFIG = {
   ]
 };
 
-/* -------------------------------------------------------------
-   RENDER LOGIC
-------------------------------------------------------------- */
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 
-// 1. Render Nav Logo
 const navBrandEl = $('#brandNavEl');
 if (CONFIG.navLogo.logoType === 'image') {
   navBrandEl.innerHTML = `<img class="brand-logo-img" src="${CONFIG.navLogo.logoSrc}" alt="${CONFIG.brandName}">`;
@@ -517,7 +433,6 @@ if (CONFIG.navLogo.logoType === 'image') {
   navBrandEl.innerHTML = `<span class="brand-text">${CONFIG.brandName}</span>`;
 }
 
-// 2. Render Hero Brand
 const heroBrandEl = $('#heroHeroBrandEl');
 if (CONFIG.heroLogo.useImage && CONFIG.heroLogo.imageSrc) {
   heroBrandEl.innerHTML = `<img class="hero-mark" src="${CONFIG.heroLogo.imageSrc}" alt="${CONFIG.brandName}">`;
@@ -525,7 +440,6 @@ if (CONFIG.heroLogo.useImage && CONFIG.heroLogo.imageSrc) {
   heroBrandEl.innerHTML = `<h1 style="font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(52px,12vw,120px);line-height:1;margin:0;">${CONFIG.brandName}</h1>`;
 }
 
-// 3. Render Hero & Intro Texts
 $('#heroSubEl').textContent = CONFIG.heroSubtext;
 $('#introEyebrowEl').textContent = CONFIG.introEyebrow;
 $('#introHeadingEl').textContent = CONFIG.introHeading;
@@ -535,7 +449,6 @@ $('#contactEmailEl').href = `mailto:${CONFIG.email}`;
 $('#contactEmailEl').textContent = CONFIG.email;
 $('#contactLocationEl').textContent = CONFIG.location;
 
-// Render Social Links
 const socEl = $('#socialLinksEl');
 CONFIG.socials.forEach(s => {
   const a = document.createElement('a'); a.className='social'; a.href=s.url; a.target='_blank'; a.rel='noopener'; a.setAttribute('aria-label', s.name);
@@ -543,25 +456,21 @@ CONFIG.socials.forEach(s => {
   socEl.appendChild(a);
 });
 
-// Render Features
 const featEl = $('#homeFeatures');
-CONFIG.features.forEach((f, i) => {
-  const sec = document.createElement('section'); sec.className = `feature reveal ${f.reverse ? 'reverse' : ''}`;
+featEl.innerHTML = '';
+CONFIG.features.forEach((f) => {
+  const sec = document.createElement('section'); sec.className = 'feature reveal';
   sec.innerHTML = `
-    <a class="feature-media" href="${f.link}" data-nav>
-      <div class="ph h${(i%3)+1}" data-label="${f.title}"></div>
-      <img class="feature-img" src="${f.img}" alt="${f.title}" onerror="this.style.display='none'">
-    </a>
-    <div class="feature-body">
+    <div class="feature-bg" style="background-image: url('${f.img}');"></div>
+    <div class="feature-content">
       <span class="feature-label">${f.label}</span>
-      <h3>${f.title}</h3>
-      <p>${f.desc}</p>
-      <a class="cta" href="${f.link}" data-nav>Explore</a>
+      <h3 class="feature-h">${f.title}</h3>
+      <p class="feature-p">${f.desc}</p>
+      <a class="cta" href="${f.link}" data-nav="">Explore</a>
     </div>`;
   featEl.appendChild(sec);
 });
 
-// Render Footers
 const footerBrandHTML = CONFIG.navLogo.logoType === 'image' 
   ? `<img class="foot-brand-logo" src="${CONFIG.navLogo.logoSrc}" alt="${CONFIG.brandName}">`
   : `<span class="brand-text" style="font-size:24px;">${CONFIG.brandName}</span>`;
@@ -575,14 +484,14 @@ const footerHTML = `
     </div>
     <div class="foot-col">
       <h4>Navigation</h4>
-      <a href="#home" data-nav>Home</a>
-      <a href="#portfolio" data-nav>Portfolio</a>
-      <a href="#contact" data-nav>Contact</a>
+      <a href="#home" data-nav="">Home</a>
+      <a href="#portfolio" data-nav="">Portfolio</a>
+      <a href="#contact" data-nav="">Contact</a>
     </div>
     <div class="foot-col">
       <h4>Connect</h4>
       <a href="mailto:${CONFIG.email}">${CONFIG.email}</a>
-      <a href="#contact" data-nav>Direct Message</a>
+      <a href="#contact" data-nav="">Direct Message</a>
     </div>
   </div>
   <div class="foot-base">
@@ -590,9 +499,10 @@ const footerHTML = `
     <span>${CONFIG.location}</span>
   </div>
 </footer>`;
-$$('[id^="footer"]').forEach(f => f.innerHTML = footerHTML);
+$('#footerHome').innerHTML = footerHTML;
+$('#footerPortfolio').innerHTML = footerHTML;
+$('#footerContact').innerHTML = footerHTML;
 
-// Portfolio Gallery
 const tabs = $('#pfTabs'), gal = $('#pfGallery');
 let galleries = {};
 CONFIG.portfolioCategories.forEach((c, i) => {
@@ -624,7 +534,6 @@ tabs.addEventListener('click', e => {
 ('.pf-set').forEach(s => s.classList.toggle('active', s.id === 'set-'+b.dataset.cat));
 });
 
-// Lightbox
 const lb = $('#lightbox'), lbStage = $('#lbStage'); let lbKey = null, lbIdx = 0;
 function openLB(key, idx) { lbKey = key; lbIdx = idx; renderLB(); lb.classList.add('open'); }
 function renderLB() {
@@ -637,7 +546,6 @@ $('#lbPrev').onclick = e => { e.stopPropagation(); lbIdx = (lbIdx - 1 + gallerie
 $('#lbNext').onclick = e => { e.stopPropagation(); lbIdx = (lbIdx + 1) % galleries[lbKey].length; renderLB(); };
 lb.onclick = e => { if(e.target === lb) closeLB(); };
 
-// Form override
 $('#contactForm').addEventListener('submit', (e) => {
   if($('#contactForm').action.includes("YOUR_ENDPOINT")) {
     e.preventDefault();
@@ -646,7 +554,6 @@ $('#contactForm').addEventListener('submit', (e) => {
   }
 });
 
-// Routing
 const pages = $$('.page'), navA =$$('#navLinks a');
 function go(id) {
   if(!document.getElementById(id)) id = 'home';
@@ -666,7 +573,6 @@ document.addEventListener('click', e => {
 window.addEventListener('popstate', () => go(location.hash.replace('#', '') || 'home'));
 $('#navToggle').onclick = () => { $('#navToggle').classList.toggle('open'); $('#navLinks').classList.toggle('open'); };
 
-// Reveal on Scroll
 document.querySelectorAll('.reveal').forEach(e => {
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(entries => {
@@ -675,7 +581,6 @@ document.querySelectorAll('.reveal').forEach(e => {
   } else { e.classList.add('in'); }
 });
 
-// Video reel initialization (optional)
 if(CONFIG.heroReelVideo) {
   const v = document.createElement('video');
   v.className = 'hero-video-el';
