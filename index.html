@@ -1,15 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Your Name — Portfolio & Film</title>
-<meta name="description" content="Cinematic photography, films, and creative projects." />
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Portfolio &amp; Film</title>
 
-<!-- Google Fonts (Replaced Typekit for universal maintainability) -->
+<!-- Favicon / Thumbnail icons (Cloudflare Pages root or CDN paths) -->
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+
+<!-- Social Share Thumbnails (Open Graph / Twitter Preview) -->
+<meta property="og:title" content="Your Name — Photography &amp; Film">
+<meta property="og:description" content="Cinematic photography and creative portfolio.">
+<meta property="og:image" content="https://yourdomain.pages.dev/assets/images/share-thumbnail.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yourdomain.pages.dev/assets/images/share-thumbnail.jpg">
+
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -40,13 +50,11 @@ a{color:inherit;text-decoration:none}
 button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
 ::selection{background:var(--gold);color:#100E0B}
 
-/* filmic grain overlay */
 body::after{
   content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ---------- placeholder tiles ---------- */
 .ph{position:relative;overflow:hidden;background:linear-gradient(135deg,#231e17,#14110d 70%);
   display:flex;align-items:center;justify-content:center;isolation:isolate}
 .ph::before{content:"";position:absolute;inset:0;
@@ -57,8 +65,6 @@ body::after{
 .ph.h1{background:linear-gradient(135deg,#26201a,#141009)}
 .ph.h2{background:linear-gradient(135deg,#1d2420,#0f120f)}
 .ph.h3{background:linear-gradient(135deg,#261c22,#120d10)}
-.ph.h4{background:linear-gradient(135deg,#232228,#0f0e12)}
-.ph.h5{background:linear-gradient(135deg,#2a231a,#120e08)}
 
 /* =================== NAV =================== */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;
@@ -67,13 +73,33 @@ body::after{
   background:linear-gradient(180deg,rgba(16,14,11,.75),transparent);}
 .nav.solid{background:rgba(16,14,11,.92);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);padding-top:16px;padding-bottom:16px}
-.brand{display:inline-flex;align-items:center;gap:11px;font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;letter-spacing:.02em;color:var(--ink)}
-.brand-logo{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none}
+
+.brand{display:inline-flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none}
+.brand-logo-img{
+  height: clamp(28px, 3.5vw, 36px);
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.brand-avatar{
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--line-2);
+}
+.brand-text{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size: clamp(20px, 2.5vw, 24px);
+  letter-spacing:.02em;
+}
+
 .nav-links{display:flex;gap:30px;align-items:center}
 .nav-links a{font-size:13px;letter-spacing:.04em;color:var(--faint);
   transition:color .3s var(--ease);position:relative;padding:4px 0}
-.nav-links a:hover{color:var(--ink)}
-.nav-links a.active{color:var(--ink)}
+.nav-links a:hover, .nav-links a.active{color:var(--ink)}
 .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--gold)}
 .nav-toggle{display:none;width:30px;height:30px;position:relative}
 .nav-toggle span{position:absolute;left:4px;right:4px;height:1.5px;background:var(--ink);transition:.35s var(--ease)}
@@ -94,21 +120,16 @@ body::after{
 /* =================== HERO =================== */
 .hero{height:100svh;min-height:600px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-media{position:absolute;inset:0;z-index:0}
-.hero-media video,.hero-media .reel{width:100%;height:100%;object-fit:cover}
-.hero-media .reel{animation:kb 24s var(--ease) infinite alternate}
 .hero-fallback{position:absolute;inset:0;z-index:0;
   background:radial-gradient(120% 90% at 30% 20%,#241d15,#100E0B 62%),linear-gradient(120deg,#16130f,#0d0b08);
   background-size:170% 170%;animation:heroPan 32s var(--ease) infinite alternate}
 @keyframes heroPan{from{background-position:0% 0%}to{background-position:100% 100%}}
 .hero-video-el{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
-.hero-video-iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:100vw;height:56.25vw;min-height:100%;min-width:177.78vh;border:0;z-index:0;pointer-events:none}
-@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.14)}}
 .hero-media::after{content:"";position:absolute;inset:0;
   background:radial-gradient(120% 100% at 50% 30%,transparent 30%,rgba(16,14,11,.55) 100%),
              linear-gradient(180deg,rgba(16,14,11,.35),rgba(16,14,11,.15) 40%,rgba(16,14,11,.9))}
 .hero-inner{position:relative;z-index:2;text-align:center;padding:0 24px}
-.hero-mark{width:min(74vw,540px);height:auto;filter:drop-shadow(0 2px 40px rgba(0,0,0,.5))}
+.hero-mark{width:min(74vw,540px);height:auto;filter:drop-shadow(0 2px 40px rgba(0,0,0,.5));margin:0 auto}
 .hero-sub{margin-top:22px;font-size:14px;letter-spacing:.28em;color:var(--faint);text-transform:uppercase}
 .scrollcue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;
   font-size:11px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase;
@@ -125,7 +146,6 @@ body::after{
 .reveal{opacity:0;transform:translateY(34px);transition:opacity 1.05s var(--ease),transform 1.05s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
-/* =================== HOME: INTRO + FEATURES =================== */
 .intro{position:relative;overflow:hidden;padding:clamp(90px,14vh,165px) var(--pad) clamp(74px,10vh,120px);text-align:center;border-bottom:1px solid var(--line)}
 .intro-bg{position:absolute;inset:0;z-index:0;background:#100E0B center/cover no-repeat; opacity: 0.3;}
 .intro-content{position:relative;z-index:1;text-shadow:0 2px 32px rgba(0,0,0,.8),0 1px 4px rgba(0,0,0,.5)}
@@ -136,6 +156,7 @@ body::after{
 .social{display:inline-flex;color:#f4efe6;opacity:.55;transition:opacity .3s var(--ease),transform .3s var(--ease)}
 .social svg{width:23px;height:23px;display:block}
 .social:hover{opacity:1;transform:translateY(-3px)}
+
 .feature{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);align-items:center;padding:clamp(36px,6vh,80px) var(--pad)}
 .feature.reverse .feature-media{order:2}
 .feature-media{position:relative;display:block;aspect-ratio:4/3;overflow:hidden}
@@ -145,18 +166,6 @@ body::after{
 .feature-label{display:block;margin-bottom:18px; font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .feature-body h3{font-family:var(--sans);font-weight:700;font-size:clamp(28px,4vw,50px);line-height:1.02;letter-spacing:-.032em;margin-bottom:20px}
 .feature-body p{color:rgba(244,239,230,.5);font-size:15px;line-height:1.6;max-width:42ch;margin-bottom:30px}
-
-/* =================== PARTNERS =================== */
-.partners{padding:90px var(--pad);background:#fff}
-.partners h2{font-family:var(--sans);font-weight:700;font-size:clamp(24px,3vw,34px);letter-spacing:-.03em;text-align:center;margin-bottom:8px;color:#14100b}
-.partners .lead{text-align:center;color:#6f675b;font-size:14px;margin-bottom:50px}
-.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.marquee-track{display:flex;gap:26px;width:max-content;animation:scroll 40s linear infinite;will-change:transform;}
-@keyframes scroll{to{transform:translateX(-50%)}}
-.p-chip{flex:none;height:80px;display:flex;align-items:center;justify-content:center;padding:0 34px}
-.p-logo{max-height:44px;width:auto;max-width:180px;display:block}
-.p-name{font-size:15px;font-weight:600;letter-spacing:-.01em;color:#1a160f;white-space:nowrap}
 
 /* =================== PORTFOLIO =================== */
 .pf-tabs{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,40px);padding:22px var(--pad) 0;position:sticky;top:76px;z-index:40;
@@ -172,108 +181,45 @@ body::after{
 .pf-set.active{display:block}
 .pf-sectionhead{position:relative;margin:30px var(--pad) 32px;aspect-ratio:21/7;min-height:210px;
   overflow:hidden;display:flex;align-items:flex-end;padding:clamp(24px,4vw,44px)}
-.pf-sectionhead .ph{position:absolute;inset:0;z-index:0}
-.pf-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.pf-sectionhead::after{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(0deg,rgba(16,14,11,.9),rgba(16,14,11,.25) 70%)}
-.pf-sectionhead-inner{position:relative;z-index:2}
 .pf-sectionhead-inner h2{font-family:var(--sans);font-weight:700;font-size:clamp(30px,5vw,58px);letter-spacing:-.038em;line-height:1}
 .pf-sectionhead-inner p{color:rgba(244,239,230,.62);font-size:15px;margin-top:10px;max-width:52ch}
 .pf-grid{columns:3;column-gap:14px;padding:0 var(--pad)}
 .pf-item{break-inside:avoid;margin-bottom:14px;cursor:pointer;position:relative;overflow:hidden}
-.pf-item:hover .ph{transform:scale(1.05);filter:brightness(1.08)}
+.media-tile{position:relative;overflow:hidden;background:#14110d;width:100%}
+.media-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s var(--ease),filter .5s}
+.media-tile.natural img{height:auto;object-fit:contain;opacity:0;transition:opacity .7s var(--ease)}
+.media-tile.natural img.loaded{opacity:1}
+.pf-item:hover .media-tile img{transform:scale(1.05);filter:brightness(1.08)}
 
-/* =================== PROJECTS =================== */
-.pj-row{padding:14px 0 56px}
-.pj-row h2{font-family:var(--sans);font-weight:700;font-size:clamp(22px,3vw,34px);letter-spacing:-.03em;padding:0 var(--pad);margin-bottom:6px}
-.pj-row .sub{color:var(--muted);font-size:14px;padding:0 var(--pad);margin-bottom:26px}
-.pj-track{display:flex;gap:16px;overflow-x:auto;padding:0 var(--pad) 14px;scroll-snap-type:x mandatory;scrollbar-width:none}
-.pj-track::-webkit-scrollbar{display:none}
-.pj-card{flex:0 0 clamp(280px,42vw,560px);scroll-snap-align:start;cursor:pointer;text-decoration:none;color:inherit}
-.pj-card .ph{aspect-ratio:16/9}
-.pj-card .cap{padding:14px 2px}
-.pj-card .cap b{font-weight:500;font-size:15px;display:block}
-.pj-card .cap span{color:var(--muted);font-size:13px;display:block}
-.pj-cover{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:3px;background:var(--surface)}
-.pj-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .4s}
-.pj-card:hover .pj-cover img{transform:scale(1.03);filter:brightness(1.08)}
-.pj-card .cap .pj-explore{display:table;margin-top:12px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink); border-bottom:1px solid var(--gold);padding-bottom:3px;transition:color .3s}
-.pj-card:hover .cap .pj-explore{color:var(--gold)}
-
-/* =================== PROJECT DETAIL =================== */
-.pd{padding:120px var(--pad) clamp(60px,8vw,110px);max-width:1320px;margin:0 auto}
-.pd-back{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .3s;margin-bottom:20px;}
-.pd-back:hover{color:var(--ink)}
-.pd-head{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,6vw,90px);align-items:end;padding:clamp(28px,5vw,56px) 0 clamp(36px,5vw,64px)}
-.pd-head h1{font-family:var(--sans);font-weight:700;font-size:clamp(38px,6.5vw,80px);line-height:1;letter-spacing:-.035em}
-.pd-client{color:var(--faint);margin-top:16px;font-size:16px}
-.pd-write{color:var(--faint);font-size:16px;max-width:58ch}
-.pd-facts{margin-top:22px;border-top:1px solid var(--line)}
-.pd-facts div{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
-.pd-facts dt{color:var(--muted)}
-.pd-facts dd{text-align:right;color:var(--ink)}
-.pd-lead{display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:clamp(22px,5vw,64px);align-items:center;margin-bottom:clamp(30px,5vw,56px)}
-.pd-reel{position:relative;display:block;aspect-ratio:9/16;overflow:hidden;border-radius:4px;background:var(--surface)}
-.pd-reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.pd-play{position:absolute;left:50%;top:50%;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;
-  background:rgba(244,239,230,.92);color:#100E0B;display:flex;align-items:center;justify-content:center;font-size:22px;padding-left:4px;transition:transform .3s var(--ease)}
-.pd-reel:hover .pd-play{transform:scale(1.08)}
-.pd-watch{display:inline-block;margin-top:22px;padding:14px 32px;background:var(--ink);color:#100E0B;font-size:14px;letter-spacing:.05em;border-radius:100px;transition:.3s var(--ease)}
-.pd-watch:hover{background:var(--gold)}
-.pd-stills{columns:3;column-gap:14px}
-.pd-still{break-inside:avoid;margin-bottom:14px;cursor:zoom-in;overflow:hidden;border-radius:3px}
-.pd-still img{width:100%;height:auto;transition:transform 1s var(--ease)}
-.pd-still:hover img{transform:scale(1.03)}
-
-/* =================== ABOUT & CONTACT =================== */
-.about-wrap, .contact-wrap{padding:20px var(--pad) 48px;display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,6vw,90px);align-items:start}
-.about-lead{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,6vw,80px);align-items:center;padding:8px var(--pad) 0}
-.about-portrait{position:relative;aspect-ratio:4/5;overflow:hidden}
-.about-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.about-body h2{font-family:var(--sans);font-weight:700;font-size:clamp(26px,3.4vw,42px);line-height:1.06;letter-spacing:-.03em;margin-bottom:22px}
-.about-body p{color:var(--faint);margin-bottom:18px;font-size:16px;max-width:60ch}
-.brand-list{display:flex;flex-wrap:wrap;gap:10px 22px}
-.brand-list span{color:var(--faint);font-family:var(--serif);font-size:17px}
+/* =================== CONTACT =================== */
+.contact-wrap{padding:20px var(--pad) 80px;display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,6vw,90px);align-items:start}
 .field{margin-bottom:22px}
 .field label{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 .field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line-2);
-  color:var(--ink);font-family:var(--sans);font-size:16px;padding:10px 0;transition:border-color .3s}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+  color:var(--ink);font-family:var(--sans);font-size:16px;padding:10px 0}
 .field textarea{resize:vertical;min-height:120px}
 .send{margin-top:8px;padding:15px 40px;background:var(--ink);color:#100E0B;font-size:14px;letter-spacing:.05em;border-radius:100px;transition:.3s var(--ease)}
 .send:hover{background:var(--gold)}
 .contact-side h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-weight:500}
-.contact-side a{display:block;color:var(--faint);margin-bottom:12px;transition:.3s;font-size:15px}
-.contact-side a:hover{color:var(--ink)}
+.contact-side a{display:block;color:var(--faint);margin-bottom:12px;font-size:15px}
 
 /* =================== LIGHTBOX =================== */
 .lightbox{position:fixed;inset:0;z-index:200;background:rgba(9,8,6,.96);backdrop-filter:blur(6px);
   display:none;align-items:center;justify-content:center;padding:40px}
 .lightbox.open{display:flex}
-.lb-close{position:absolute;top:26px;right:30px;font-size:30px;color:var(--faint);line-height:1;transition:.3s}
-.lb-close:hover{color:var(--ink)}
-.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:40px;color:var(--faint);padding:20px;transition:.3s}
-.lb-nav:hover{color:var(--ink)}
+.lb-close{position:absolute;top:26px;right:30px;font-size:30px;color:var(--faint);cursor:pointer}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:40px;color:var(--faint);padding:20px}
 .lb-nav.prev{left:10px}.lb-nav.next{right:10px}
-.media-tile{position:relative;overflow:hidden;background:#14110d;width:100%}
-.media-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s var(--ease),filter .5s}
-.media-tile.natural{background:#161310}
-.media-tile.natural img{height:auto;object-fit:contain;opacity:0;transition:opacity .7s var(--ease)}
-.media-tile.natural img.loaded{opacity:1}
-.pf-item:hover .media-tile img{transform:scale(1.05);filter:brightness(1.08)}
-.play-badge{position:absolute;inset:0;margin:auto;width:58px;height:58px;border:1px solid rgba(244,239,230,.65);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink);
-  background:rgba(16,14,11,.3);pointer-events:none}
-.lb-media{max-width:min(94vw,1200px);max-height:86vh;width:auto;height:auto;object-fit:contain;background:transparent;display:block}
-.lightbox iframe.lb-media{width:min(92vw,1100px);aspect-ratio:16/9;height:auto;border:0}
+.lb-media{max-width:min(94vw,1200px);max-height:86vh;width:auto;height:auto;object-fit:contain;display:block}
 
 /* =================== FOOTER =================== */
 .site-footer{border-top:1px solid var(--line);padding:70px var(--pad) 40px;background:var(--bg-2)}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;align-items:start}
-.foot-handle{display:block;font-family:var(--sans);font-weight:500;font-size:18px;letter-spacing:-.01em;color:var(--muted);margin:0}
+.foot-brand{display:inline-flex;align-items:center;gap:12px;margin-bottom:6px}
+.foot-brand-logo{height:30px;width:auto;object-fit:contain}
+.foot-handle{display:block;font-family:var(--sans);font-weight:500;font-size:18px;color:var(--muted);margin:0}
 .foot-col h4{font-size:12px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-bottom:18px;font-weight:500}
-.foot-col a{display:block;color:var(--faint);font-size:14px;margin-bottom:11px;transition:color .3s}
-.foot-col a:hover{color:var(--ink)}
+.foot-col a{display:block;color:var(--faint);font-size:14px;margin-bottom:11px}
 .foot-base{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:13px}
 
 /* =================== RESPONSIVE =================== */
@@ -291,30 +237,20 @@ body::after{
   .nav-toggle{display:block;z-index:130}
   .page-head{padding:120px var(--pad) 30px}
   .pf-grid{columns:2}
-  .about-wrap, .contact-wrap{grid-template-columns:1fr}
-  .about-lead{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr}
   .feature{grid-template-columns:1fr;gap:20px}
   .feature.reverse .feature-media{order:0}
   .feature-media{aspect-ratio:3/2}
   .foot-grid{grid-template-columns:1fr 1fr}
-  .foot-grid .brand-cell{grid-column:1/-1}
 }
 @media(max-width:560px){
-  .brand{font-size:20px;gap:9px}
-  .brand-handle{font-size:12px}
+  .brand-logo-img{height: 26px;}
+  .brand-text{font-size: 19px;}
   .pf-tabs{top:66px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .pf-tabs::-webkit-scrollbar{display:none}
   .pf-grid{columns:2;column-gap:10px}
   .foot-grid{grid-template-columns:1fr}
   .lightbox{padding:16px}
-  .lb-close{top:14px;right:16px}
-  .lb-nav{padding:12px}
-}
-@media(prefers-reduced-motion:reduce){
-  *:not(.marquee-track){animation:none!important;scroll-behavior:auto}
-  .hero-media .reel{animation:none}
-  .hero-fallback{animation:none}
-  .reveal{opacity:1;transform:none;transition:none}
 }
 </style>
 </head>
@@ -322,13 +258,11 @@ body::after{
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#home" class="brand" data-nav id="brandNameEl">Your Brand</a>
+  <a href="#home" class="brand" data-nav="" id="brandNavEl"><img class="brand-logo-img" src="/assets/images/logo-nav.png" alt="Your Brand"></a>
   <div class="nav-links" id="navLinks">
-    <a href="#home" data-nav>Home</a>
-    <a href="#portfolio" data-nav>Portfolio</a>
-    <a href="#projects" data-nav>Projects</a>
-    <a href="#about" data-nav>About</a>
-    <a href="#contact" data-nav>Contact</a>
+    <a href="#home" data-nav="" class="active">Home</a>
+    <a href="#portfolio" data-nav="">Portfolio</a>
+    <a href="#contact" data-nav="">Contact</a>
   </div>
   <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span></button>
 </nav>
@@ -336,38 +270,70 @@ body::after{
 <!-- HOME -->
 <main class="page active" id="home">
   <section class="hero">
-    <div class="hero-media" id="heroMedia">
-      <!-- Background video initialized in JS -->
-      <div class="hero-fallback" id="heroFallback"></div>
-    </div>
-    <div class="hero-inner reveal">
-      <!-- Signature Logo Image (Configured in JS) -->
-      <img class="hero-mark" id="heroLogoEl" alt="Logo" style="display:none;">
-      <h1 id="heroTextEl" style="font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(52px,12vw,120px);line-height:1;margin:0;">Your Name</h1>
-      <div class="hero-sub" id="heroSubEl">Photography & Film</div>
+    <div class="hero-media" id="heroMedia"><div class="hero-fallback"></div></div>
+    <div class="hero-inner reveal in">
+      <div id="heroHeroBrandEl"><img class="hero-mark" src="/assets/images/logo-hero.png" alt="Your Brand"></div>
+      <div class="hero-sub" id="heroSubEl">Photography &amp; Film</div>
     </div>
     <div class="scrollcue">Scroll<i></i></div>
   </section>
 
-  <section class="intro reveal">
-    <div class="intro-bg" id="introBgEl"></div>
+  <section class="intro reveal in">
+    <div class="intro-bg" id="introBgEl" style="background-image: url(&quot;/assets/images/intro-bg.jpg&quot;);"></div>
     <div class="intro-content">
-      <span class="eyebrow" id="introEyebrowEl">Introduction</span>
-      <h2 class="intro-h" id="introHeadingEl">A brief statement about your work and vision.</h2>
-      <p class="intro-p" id="introTextEl">Write a short paragraph here introducing who you are, what you do, and the kind of stories you like to tell.</p>
-      <div class="socials" id="socialLinksEl"></div>
+      <span class="eyebrow" id="introEyebrowEl">Photography &amp; Film</span>
+      <h2 class="intro-h" id="introHeadingEl">everything matters, nothing's important</h2>
+      <p class="intro-p" id="introTextEl">Capturing visual moments and telling stories through cinematic composition.</p>
+      <div class="socials" id="socialLinksEl"><a class="social" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17-.21-.55-.47-.94-.88-1.35-.41-.41-.8-.67-1.35-.88-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07zm0 2.76a5.46 5.46 0 110 10.92 5.46 5.46 0 010-10.92zm0 9a3.54 3.54 0 100-7.08 3.54 3.54 0 000 7.08zm5.68-9.15a1.27 1.27 0 11-2.55 0 1.27 1.27 0 012.55 0z"></path></svg></a></div>
     </div>
   </section>
 
-  <!-- Dynamic Features Injected Here -->
-  <div id="homeFeatures"></div>
-
-  <section class="partners reveal">
-    <h2>Trusted partners</h2>
-    <p class="lead">Brands and platforms I've worked with.</p>
-    <div class="marquee"><div class="marquee-track" id="partnerTrack"></div></div>
-  </section>
-  <div id="footerHome"></div>
+  <!-- Feature callouts on Home (Linking to Portfolio and Contact) -->
+  <div id="homeFeatures"><section class="feature reveal in">
+    <a class="feature-media" href="#portfolio" data-nav="">
+      <div class="ph h1" data-label="Portfolio"></div>
+      <img class="feature-img" src="/assets/images/feat-portfolio.jpg" alt="Portfolio" onerror="this.style.display='none'" style="display: none;">
+    </a>
+    <div class="feature-body">
+      <span class="feature-label">Selected Work</span>
+      <h3>Portfolio</h3>
+      <p>Browse full collections across landscape, street, and creative photography.</p>
+      <a class="cta" href="#portfolio" data-nav="">Explore</a>
+    </div></section><section class="feature reveal reverse in">
+    <a class="feature-media" href="#contact" data-nav="">
+      <div class="ph h2" data-label="Get in Touch"></div>
+      <img class="feature-img" src="/assets/images/feat-contact.jpg" alt="Get in Touch" onerror="this.style.display='none'" style="display: none;">
+    </a>
+    <div class="feature-body">
+      <span class="feature-label">Commission &amp; Licensing</span>
+      <h3>Get in Touch</h3>
+      <p>Available for commercial shoots, editorial assignments, and creative collaborations.</p>
+      <a class="cta" href="#contact" data-nav="">Explore</a>
+    </div></section></div>
+  <div id="footerHome">
+<footer class="site-footer">
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand"><img class="foot-brand-logo" src="/assets/images/logo-nav.png" alt="Your Brand"></div>
+      <span class="foot-handle">@yourhandle</span>
+    </div>
+    <div class="foot-col">
+      <h4>Navigation</h4>
+      <a href="#home" data-nav="">Home</a>
+      <a href="#portfolio" data-nav="">Portfolio</a>
+      <a href="#contact" data-nav="">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h4>Connect</h4>
+      <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
+      <a href="#contact" data-nav="">Direct Message</a>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>© 2026 Your Name · Studio</span>
+    <span>Your City, Country</span>
+  </div>
+</footer></div>
 </main>
 
 <!-- PORTFOLIO -->
@@ -377,51 +343,32 @@ body::after{
     <h1>Portfolio</h1>
     <p>A showcase of the world as I capture it. Tap any frame to view it larger.</p>
   </header>
-  <div class="pf-tabs" id="pfTabs"></div>
-  <div class="pf-gallery" id="pfGallery"></div>
-  <div id="footerPortfolio"></div>
-</main>
-
-<!-- PROJECTS -->
-<main class="page" id="projects">
-  <header class="page-head">
-    <div class="kicker">Commissioned & personal</div>
-    <h1>Projects</h1>
-    <p>Campaigns, client freelance, and personal stories.</p>
-  </header>
-  <div id="pjRows"></div>
-  <div id="footerProjects"></div>
-</main>
-
-<!-- PROJECT DETAIL -->
-<main class="page" id="project">
-  <div id="pjDetail"></div>
-  <div id="footerProject"></div>
-</main>
-
-<!-- ABOUT -->
-<main class="page" id="about">
-  <header class="page-head">
-    <div class="kicker">Behind the lens</div>
-    <h1>About</h1>
-  </header>
-  <div class="about-lead">
-    <div class="about-portrait">
-      <div class="ph h3" data-label="Portrait"></div>
-      <img class="about-img" id="aboutPortraitEl" alt="Portrait">
-    </div>
-    <div class="about-intro about-body">
-      <h2 id="aboutTitleEl">Hi, I'm [Name].</h2>
-      <div id="aboutTextEl"></div>
-    </div>
-  </div>
-  <div class="about-wrap">
+  <div class="pf-tabs" id="pfTabs"><button class="pf-tab active" data-cat="landscape">Landscape</button><button class="pf-tab" data-cat="street">Street</button><button class="pf-tab" data-cat="creative">Creative</button></div>
+  <div class="pf-gallery" id="pfGallery"><div class="pf-set active" id="set-landscape"><div class="pf-sectionhead"><div class="pf-sectionhead-inner"><span class="eyebrow">Portfolio</span><h2>Landscape</h2><p>Travel and landscape, from mountaintops to coastlines.</p></div></div><div class="pf-grid"><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/landscape-01.jpg" loading="lazy"></div></div><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/landscape-02.jpg" loading="lazy"></div></div></div></div><div class="pf-set" id="set-street"><div class="pf-sectionhead"><div class="pf-sectionhead-inner"><span class="eyebrow">Portfolio</span><h2>Street</h2><p>Light, people, and fleeting moments in the city.</p></div></div><div class="pf-grid"><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/street-01.jpg" loading="lazy"></div></div><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/street-02.jpg" loading="lazy"></div></div></div></div><div class="pf-set" id="set-creative"><div class="pf-sectionhead"><div class="pf-sectionhead-inner"><span class="eyebrow">Portfolio</span><h2>Creative</h2><p>Experiments, concepts, and personal fine-art work.</p></div></div><div class="pf-grid"><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/creative-01.jpg" loading="lazy"></div></div></div></div></div>
+  <div id="footerPortfolio">
+<footer class="site-footer">
+  <div class="foot-grid">
     <div>
-      <h3>Brands I've worked with</h3>
-      <div class="brand-list" id="aboutBrands"></div>
+      <div class="foot-brand"><img class="foot-brand-logo" src="/assets/images/logo-nav.png" alt="Your Brand"></div>
+      <span class="foot-handle">@yourhandle</span>
+    </div>
+    <div class="foot-col">
+      <h4>Navigation</h4>
+      <a href="#home" data-nav="">Home</a>
+      <a href="#portfolio" data-nav="">Portfolio</a>
+      <a href="#contact" data-nav="">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h4>Connect</h4>
+      <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
+      <a href="#contact" data-nav="">Direct Message</a>
     </div>
   </div>
-  <div id="footerAbout"></div>
+  <div class="foot-base">
+    <span>© 2026 Your Name · Studio</span>
+    <span>Your City, Country</span>
+  </div>
+</footer></div>
 </main>
 
 <!-- CONTACT -->
@@ -429,27 +376,49 @@ body::after{
   <header class="page-head">
     <div class="kicker">Say hello</div>
     <h1>Contact</h1>
-    <p>For commissions, collaborations or licensing — drop me a line.</p>
+    <p>For commissions, collaborations or licensing — drop me a line and I'll get back to you.</p>
   </header>
   <div class="contact-wrap">
     <div>
-      <!-- Update form action with Formspree or Cloudflare Pages Function -->
       <form action="https://formspree.io/f/YOUR_ENDPOINT" method="POST" id="contactForm">
-        <div class="field"><label>Name</label><input type="text" name="name" required placeholder="Your name"></div>
-        <div class="field"><label>Email</label><input type="email" name="email" required placeholder="you@email.com"></div>
-        <div class="field"><label>Message</label><textarea name="message" required placeholder="Tell me about your project"></textarea></div>
+        <div class="field"><label>Name</label><input type="text" name="name" required="" placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input type="email" name="email" required="" placeholder="you@email.com"></div>
+        <div class="field"><label>Message</label><textarea name="message" required="" placeholder="Tell me about your project"></textarea></div>
         <button type="submit" class="send">Send message</button>
       </form>
       <div class="form-note" id="formNote"></div>
     </div>
     <div class="contact-side">
       <h4 style="margin-top:0">Email</h4>
-      <a id="contactEmailEl" href="#">hello@domain.com</a>
+      <a id="contactEmailEl" href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
       <h4 style="margin-top:30px">Based in</h4>
-      <a id="contactLocationEl">City, Country</a>
+      <a id="contactLocationEl">Your City, Country</a>
     </div>
   </div>
-  <div id="footerContact"></div>
+  <div id="footerContact">
+<footer class="site-footer">
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand"><img class="foot-brand-logo" src="/assets/images/logo-nav.png" alt="Your Brand"></div>
+      <span class="foot-handle">@yourhandle</span>
+    </div>
+    <div class="foot-col">
+      <h4>Navigation</h4>
+      <a href="#home" data-nav="">Home</a>
+      <a href="#portfolio" data-nav="">Portfolio</a>
+      <a href="#contact" data-nav="">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h4>Connect</h4>
+      <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
+      <a href="#contact" data-nav="">Direct Message</a>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>© 2026 Your Name · Studio</span>
+    <span>Your City, Country</span>
+  </div>
+</footer></div>
 </main>
 
 <!-- LIGHTBOX -->
@@ -460,105 +429,103 @@ body::after{
   <button class="lb-nav next" id="lbNext" aria-label="Next">›</button>
 </div>
 
-<!-- ==========================================
-     JAVASCRIPT DATA CONFIGURATION
-     Edit this section to customize your site!
-     Assets path should be relative to your CF Pages root (e.g. /assets/images/...)
-=========================================== -->
+<!-- ===============================================================
+     CONFIG: EASY SITE MAINTENANCE FOR CLOUDFLARE PAGES
+================================================================ -->
 <script>
 const CONFIG = {
   brandName: "Your Brand",
   handle: "@yourhandle",
   email: "hello@yourdomain.com",
   location: "Your City, Country",
-  footerText: "Your Name · Your Brand",
-  
-  // Hero Settings
-  heroLogoSrc: "", // Set path to PNG logo to use instead of text (e.g. "/assets/images/logo.png")
-  heroSubtext: "Photography & Film",
-  heroReelVideo: "", // Path to background video (e.g. "/assets/video/hero.mp4")
-  heroReelPoster: "", // Fallback image if video fails to load
+  footerText: "Your Name · Studio",
 
-  // Intro Section
+  // 1. NAV BAR LOGO
+  navLogo: {
+    logoType: "image", // Options: "image" (wordmark/symbol), "avatar-text", or "text"
+    logoSrc: "/assets/images/logo-nav.png", 
+    avatarSrc: "/assets/images/avatar.jpg",
+    textLabel: "Your Brand" 
+  },
+
+  // 2. HERO CENTER LOGO
+  heroLogo: {
+    useImage: true, 
+    imageSrc: "/assets/images/logo-hero.png"
+  },
+
+  heroSubtext: "Photography & Film",
+  heroReelVideo: "", // Set relative path to .mp4 if you want a looping background video
+
+  // Intro section
   introBgImage: "/assets/images/intro-bg.jpg",
   introEyebrow: "Photography & Film",
-  introHeading: "Capturing moments that matter.",
-  introText: "Welcome to my portfolio. I specialize in cinematic photography and visual storytelling.",
+  introHeading: "everything matters, nothing's important",
+  introText: "Capturing visual moments and telling stories through cinematic composition.",
   
-  // Social Links
+  // Socials
   socials: [
     { name: 'Instagram', url: 'https://instagram.com/', iconPath: 'M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17-.21-.55-.47-.94-.88-1.35-.41-.41-.8-.67-1.35-.88-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07zm0 2.76a5.46 5.46 0 110 10.92 5.46 5.46 0 010-10.92zm0 9a3.54 3.54 0 100-7.08 3.54 3.54 0 000 7.08zm5.68-9.15a1.27 1.27 0 11-2.55 0 1.27 1.27 0 012.55 0z' }
   ],
 
-  // Home Page Features
+  // Home Features (Streamlined for Portfolio & Contact)
   features: [
-    { title: "Portfolio", label: "Selected Work", desc: "View my best landscape and street photography.", img: "/assets/images/feature-portfolio.jpg", link: "#portfolio" },
-    { title: "Projects", label: "Commissions", desc: "Advertising and personal film projects.", img: "/assets/images/feature-projects.jpg", link: "#projects", reverse: true }
+    { title: "Portfolio", label: "Selected Work", desc: "Browse full collections across landscape, street, and creative photography.", img: "/assets/images/feat-portfolio.jpg", link: "#portfolio" },
+    { title: "Get in Touch", label: "Commission & Licensing", desc: "Available for commercial shoots, editorial assignments, and creative collaborations.", img: "/assets/images/feat-contact.jpg", link: "#contact", reverse: true }
   ],
 
-  // Partners (Marquee) - Add image paths to 'logo'
-  partners: [
-    { name: "Brand One", logo: "" },
-    { name: "Brand Two", logo: "" },
-    { name: "Brand Three", logo: "" }
-  ],
-
-  // About Section
-  aboutPortrait: "/assets/images/about-portrait.jpg",
-  aboutTitle: "Hi, I'm Your Name.",
-  aboutText: "<p>I am a photographer and filmmaker based in Your City. This is a placeholder paragraph to describe your journey, style, and equipment.</p>",
-
-  // Portfolio Categories & Media
+  // Portfolio Categories & Images
   portfolioCategories: [
-    { id: 'landscape', name: 'Landscape', desc: 'Travel and landscape photography.' },
-    { id: 'street', name: 'Street', desc: 'Light and moments in the city.' }
+    { id: 'landscape', name: 'Landscape', desc: 'Travel and landscape, from mountaintops to coastlines.' },
+    { id: 'street', name: 'Street', desc: 'Light, people, and fleeting moments in the city.' },
+    { id: 'creative', name: 'Creative', desc: 'Experiments, concepts, and personal fine-art work.' }
   ],
   portfolioMedia: [
-    // type: 'image' or 'video'
-    { cat: 'landscape', type: 'image', src: '/assets/images/portfolio/land-1.jpg', title: 'Mountain' },
-    { cat: 'street', type: 'image', src: '/assets/images/portfolio/street-1.jpg', title: 'City Lights' }
-  ],
-
-  // Projects
-  projectsLists: [
-    {
-      title: 'Advertising', sub: 'Campaign films & stills',
-      items: [
-        { slug: 'project-one', title: 'Project One', client: 'Brand Name', summary: 'A short description', date: '2024', reel: '', cover: '/assets/images/projects/p1-cover.jpg', stills: ['/assets/images/projects/p1-1.jpg'] }
-      ]
-    }
+    { cat: 'landscape', src: '/assets/images/portfolio/landscape-01.jpg', title: 'Mountain Mist' },
+    { cat: 'landscape', src: '/assets/images/portfolio/landscape-02.jpg', title: 'Coastal Fog' },
+    { cat: 'street', src: '/assets/images/portfolio/street-01.jpg', title: 'Rain in Neon' },
+    { cat: 'street', src: '/assets/images/portfolio/street-02.jpg', title: 'Alleyway Light' },
+    { cat: 'creative', src: '/assets/images/portfolio/creative-01.jpg', title: 'Shadow Study' }
   ]
 };
 
-/* ==========================================
-     CORE LOGIC (Do not edit below unless changing functionality)
-=========================================== */
+/* -------------------------------------------------------------
+   RENDER LOGIC
+------------------------------------------------------------- */
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-function ph(h,label,ratio){const d=document.createElement('div');d.className='ph '+h;d.dataset.label=label;if(ratio)d.style.aspectRatio=ratio;return d;}
 
-// Apply Config to DOM
-$('#brandNameEl').textContent = CONFIG.brandName;
-if(CONFIG.heroLogoSrc) {
-  $('#heroLogoEl').src = CONFIG.heroLogoSrc;
-  $('#heroLogoEl').style.display = 'block';
-  $('#heroTextEl').style.display = 'none';
+// 1. Render Nav Logo
+const navBrandEl = $('#brandNavEl');
+if (CONFIG.navLogo.logoType === 'image') {
+  navBrandEl.innerHTML = `<img class="brand-logo-img" src="${CONFIG.navLogo.logoSrc}" alt="${CONFIG.brandName}">`;
+} else if (CONFIG.navLogo.logoType === 'avatar-text') {
+  navBrandEl.innerHTML = `
+    <img class="brand-avatar" src="${CONFIG.navLogo.avatarSrc}" alt="${CONFIG.brandName}">
+    <span class="brand-text">${CONFIG.navLogo.textLabel || CONFIG.brandName}</span>
+  `;
 } else {
-  $('#heroTextEl').textContent = CONFIG.brandName;
+  navBrandEl.innerHTML = `<span class="brand-text">${CONFIG.brandName}</span>`;
 }
+
+// 2. Render Hero Brand
+const heroBrandEl = $('#heroHeroBrandEl');
+if (CONFIG.heroLogo.useImage && CONFIG.heroLogo.imageSrc) {
+  heroBrandEl.innerHTML = `<img class="hero-mark" src="${CONFIG.heroLogo.imageSrc}" alt="${CONFIG.brandName}">`;
+} else {
+  heroBrandEl.innerHTML = `<h1 style="font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(52px,12vw,120px);line-height:1;margin:0;">${CONFIG.brandName}</h1>`;
+}
+
+// 3. Render Hero & Intro Texts
 $('#heroSubEl').textContent = CONFIG.heroSubtext;
 $('#introEyebrowEl').textContent = CONFIG.introEyebrow;
 $('#introHeadingEl').textContent = CONFIG.introHeading;
 $('#introTextEl').innerHTML = CONFIG.introText;
 $('#introBgEl').style.backgroundImage = `url('${CONFIG.introBgImage}')`;
-$('#aboutPortraitEl').src = CONFIG.aboutPortrait;
-$('#aboutTitleEl').textContent = CONFIG.aboutTitle;
-$('#aboutTextEl').innerHTML = CONFIG.aboutText;
 $('#contactEmailEl').href = `mailto:${CONFIG.email}`;
 $('#contactEmailEl').textContent = CONFIG.email;
 $('#contactLocationEl').textContent = CONFIG.location;
 
-// Render Socials
+// Render Social Links
 const socEl = $('#socialLinksEl');
 CONFIG.socials.forEach(s => {
   const a = document.createElement('a'); a.className='social'; a.href=s.url; a.target='_blank'; a.rel='noopener'; a.setAttribute('aria-label', s.name);
@@ -572,7 +539,7 @@ CONFIG.features.forEach((f, i) => {
   const sec = document.createElement('section'); sec.className = `feature reveal ${f.reverse ? 'reverse' : ''}`;
   sec.innerHTML = `
     <a class="feature-media" href="${f.link}" data-nav>
-      <div class="ph h${(i%5)+1}" data-label="${f.title}"></div>
+      <div class="ph h${(i%3)+1}" data-label="${f.title}"></div>
       <img class="feature-img" src="${f.img}" alt="${f.title}" onerror="this.style.display='none'">
     </a>
     <div class="feature-body">
@@ -584,36 +551,28 @@ CONFIG.features.forEach((f, i) => {
   featEl.appendChild(sec);
 });
 
-// Render Partners
-const pt = $('#partnerTrack');
-const ab = $('#aboutBrands');
-[...CONFIG.partners, ...CONFIG.partners].forEach(p => {
-  const chip = document.createElement('div'); chip.className = 'p-chip';
-  if(p.logo) chip.innerHTML = `<img class="p-logo" src="${p.logo}" alt="${p.name}">`;
-  else chip.innerHTML = `<span class="p-name">${p.name}</span>`;
-  pt.appendChild(chip);
-});
-CONFIG.partners.forEach(p => {
-  const s = document.createElement('span'); s.textContent = p.name; ab.appendChild(s);
-});
+// Render Footers
+const footerBrandHTML = CONFIG.navLogo.logoType === 'image' 
+  ? `<img class="foot-brand-logo" src="${CONFIG.navLogo.logoSrc}" alt="${CONFIG.brandName}">`
+  : `<span class="brand-text" style="font-size:24px;">${CONFIG.brandName}</span>`;
 
-// Footer Injection
 const footerHTML = `
 <footer class="site-footer">
   <div class="foot-grid">
     <div>
-      <span class="brand">${CONFIG.brandName}</span>
+      <div class="foot-brand">${footerBrandHTML}</div>
       <span class="foot-handle">${CONFIG.handle}</span>
     </div>
     <div class="foot-col">
-      <h4>Explore</h4>
+      <h4>Navigation</h4>
+      <a href="#home" data-nav>Home</a>
       <a href="#portfolio" data-nav>Portfolio</a>
-      <a href="#projects" data-nav>Projects</a>
+      <a href="#contact" data-nav>Contact</a>
     </div>
     <div class="foot-col">
       <h4>Connect</h4>
-      <a href="#about" data-nav>About</a>
-      <a href="#contact" data-nav>Contact</a>
+      <a href="mailto:${CONFIG.email}">${CONFIG.email}</a>
+      <a href="#contact" data-nav>Direct Message</a>
     </div>
   </div>
   <div class="foot-base">
@@ -623,104 +582,52 @@ const footerHTML = `
 </footer>`;
 $$('[id^="footer"]').forEach(f => f.innerHTML = footerHTML);
 
-// Portfolio Logic
+// Portfolio Gallery
 const tabs = $('#pfTabs'), gal = $('#pfGallery');
 let galleries = {};
 CONFIG.portfolioCategories.forEach((c, i) => {
   galleries[c.id] = CONFIG.portfolioMedia.filter(m => m.cat === c.id);
   if(galleries[c.id].length === 0) {
-    galleries[c.id] = Array.from({length: 6}, (_, k) => ({ cat: c.id, type: 'placeholder', title: c.name + ' ' + (k+1) }));
+    galleries[c.id] = Array.from({length: 4}, (_, k) => ({ cat: c.id, type: 'placeholder', title: c.name + ' ' + (k+1) }));
   }
-  
   const b = document.createElement('button'); b.className = 'pf-tab' + (i===0?' active':''); b.textContent = c.name; b.dataset.cat = c.id;
   tabs.appendChild(b);
-  
   const set = document.createElement('div'); set.className = 'pf-set' + (i===0?' active':''); set.id = 'set-'+c.id;
-  const head = document.createElement('div'); head.className = 'pf-sectionhead';
-  head.innerHTML = `<div class="ph h1" style="position:absolute;inset:0"></div><div class="pf-sectionhead-inner"><span class="eyebrow">Portfolio</span><h2>${c.name}</h2><p>${c.desc}</p></div>`;
-  set.appendChild(head);
-  
-  const grid = document.createElement('div'); grid.className = 'pf-grid';
+  set.innerHTML = `<div class="pf-sectionhead"><div class="pf-sectionhead-inner"><span class="eyebrow">Portfolio</span><h2>${c.name}</h2><p>${c.desc}</p></div></div><div class="pf-grid"></div>`;
+  const grid = set.querySelector('.pf-grid');
   galleries[c.id].forEach((item, k) => {
     const el = document.createElement('div'); el.className = 'pf-item';
-    const wrap = document.createElement('div'); wrap.className = 'media-tile';
-    if(item.type === 'placeholder') {
-      wrap.appendChild(ph('h2', item.title, '4/5'));
-    } else {
-      wrap.classList.add('natural');
-      const img = document.createElement('img'); img.src = item.src; img.loading = 'lazy';
-      img.onload = () => img.classList.add('loaded');
-      img.onerror = () => { img.style.display='none'; wrap.appendChild(ph('h2', item.title, '4/5')); };
-      wrap.appendChild(img);
-    }
+    const wrap = document.createElement('div'); wrap.className = 'media-tile natural';
+    const img = document.createElement('img'); img.src = item.src; img.loading = 'lazy';
+    img.onload = () => img.classList.add('loaded');
+    img.onerror = () => { img.style.display='none'; wrap.innerHTML = `<div class="ph h2" style="aspect-ratio:4/5;" data-label="${item.title}"></div>`; };
+    wrap.appendChild(img);
     el.appendChild(wrap);
     el.addEventListener('click', () => openLB(c.id, k));
     grid.appendChild(el);
   });
   set.appendChild(grid); gal.appendChild(set);
 });
-
 tabs.addEventListener('click', e => {
   const b = e.target.closest('.pf-tab'); if(!b) return;
   $$('.pf-tab').forEach(t => t.classList.toggle('active', t===b));
   $$('.pf-set').forEach(s => s.classList.toggle('active', s.id === 'set-'+b.dataset.cat));
 });
 
-// Projects Logic
-const pjRows = $('#pjRows');
-let flatProjects = [];
-CONFIG.projectsLists.forEach(r => {
-  const sec = document.createElement('section'); sec.className = 'pj-row';
-  sec.innerHTML = `<h2>${r.title}</h2><div class="sub">${r.sub}</div>`;
-  const track = document.createElement('div'); track.className = 'pj-track';
-  r.items.forEach(it => {
-    flatProjects.push({...it, group: r.title});
-    const card = document.createElement('a'); card.className = 'pj-card'; card.href = '#project/'+it.slug; card.dataset.nav = '';
-    card.innerHTML = `<div class="pj-cover"><div class="ph h5"></div><img src="${it.cover}" loading="lazy" onerror="this.remove()"></div>
-      <div class="cap"><b>${esc(it.title)}</b><span>${esc(it.client)}</span><p>${esc(it.summary)}</p><span class="pj-explore">Explore</span></div>`;
-    track.appendChild(card);
-  });
-  sec.appendChild(track); pjRows.appendChild(sec);
-});
-
-function renderProject(slug) {
-  const p = flatProjects.find(c => c.slug === slug); if(!p) return false;
-  galleries['pj-'+p.slug] = p.stills.map(s => ({ type: 'image', src: s, title: p.title }));
-  
-  const lead = p.reel ? `<div class="pd-lead"><a class="pd-reel" href="${p.reel}" target="_blank"><div class="ph h5"></div><span class="pd-play">▶</span></a><div><h2>The film</h2><a class="pd-watch" href="${p.reel}" target="_blank">Watch</a></div></div>` : '';
-  const stills = p.stills.length ? `<div class="pd-stills">${p.stills.map((s,k) => `<div class="pd-still"><img src="${esc(s)}" onerror="this.parentElement.remove()"></div>`).join('')}</div>` : '';
-  
-  $('#pjDetail').innerHTML = `
-    <article class="pd">
-      <a class="pd-back" href="#projects" data-nav>← Back to projects</a>
-      <header class="pd-head">
-        <div><div class="kicker">${esc(p.group)}</div><h1>${esc(p.title)}</h1><p class="pd-client">${esc(p.client)}</p></div>
-        <div>${p.date ? `<dl class="pd-facts"><div><dt>Date</dt><dd>${esc(p.date)}</dd></div></dl>` : ''}</div>
-      </header>
-      ${lead}${stills}
-    </article>`;
-    
-  $$('#pjDetail .pd-still').forEach((el, k) => {
-    el.addEventListener('click', () => openLB('pj-'+p.slug, k));
-  });
-  return true;
-}
-
 // Lightbox
 const lb = $('#lightbox'), lbStage = $('#lbStage'); let lbKey = null, lbIdx = 0;
 function openLB(key, idx) { lbKey = key; lbIdx = idx; renderLB(); lb.classList.add('open'); }
 function renderLB() {
   const item = galleries[lbKey][lbIdx]; lbStage.innerHTML = '';
-  if(item.type === 'placeholder') { lbStage.appendChild(ph('h2', item.title)); return; }
   const img = document.createElement('img'); img.src = item.src; img.className = 'lb-media'; lbStage.appendChild(img);
 }
 function closeLB() { lb.classList.remove('open'); lbStage.innerHTML = ''; }
-function stepLB(d) { const n = galleries[lbKey].length; lbIdx = (lbIdx+d+n)%n; renderLB(); }
-$('#lbClose').onclick = closeLB; $('#lbPrev').onclick = e => { e.stopPropagation(); stepLB(-1) }; $('#lbNext').onclick = e => { e.stopPropagation(); stepLB(1) };
-lb.addEventListener('click', e => { if(e.target === lb) closeLB() });
-document.addEventListener('keydown', e => { if(!lb.classList.contains('open')) return; if(e.key === 'Escape') closeLB(); if(e.key === 'ArrowRight') stepLB(1); if(e.key === 'ArrowLeft') stepLB(-1); });
+$('#lbClose').onclick = closeLB;
+$('#lbPrev').onclick = e => { e.stopPropagation(); lbIdx = (lbIdx - 1 + galleries[lbKey].length) % galleries[lbKey].length; renderLB(); };
+$('#lbNext').onclick = e => { e.stopPropagation(); lbIdx = (lbIdx + 1) % galleries[lbKey].length; renderLB(); };
+lb.onclick = e => { if(e.target === lb) closeLB(); };
 
-// Form override logic
+// Form override
 $('#contactForm').addEventListener('submit', (e) => {
   if($('#contactForm').action.includes("YOUR_ENDPOINT")) {
     e.preventDefault();
@@ -732,41 +639,43 @@ $('#contactForm').addEventListener('submit', (e) => {
 // Routing
 const pages = $$('.page'), navA = $$('#navLinks a');
 function go(id) {
-  let nav = id;
-  if(id.startsWith('project/')) { if(renderProject(id.slice(8))) { id = 'project'; nav = 'projects'; } else id = 'projects'; }
-  if(id === 'project' && nav !== 'projects') id = 'projects';
   if(!document.getElementById(id)) id = 'home';
-  if(id !== 'project') nav = id;
   pages.forEach(p => p.classList.toggle('active', p.id === id));
-  navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+nav));
-  window.scrollTo(0,0); closeMenu(); setNav();
+  navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+id));
+  window.scrollTo(0,0);
+  $('#navToggle').classList.remove('open');
+  $('#navLinks').classList.remove('open');
+  $('#nav').classList.toggle('solid', id !== 'home');
 }
 document.addEventListener('click', e => {
   const el = e.target.closest('[data-nav]'); if(!el) return;
   e.preventDefault();
-  const id = el.dataset.target || (el.getAttribute('href') || '').replace('#', '') || 'home';
+  const id = (el.getAttribute('href') || '').replace('#', '') || 'home';
   history.pushState(null, '', '#'+id); go(id);
 });
 window.addEventListener('popstate', () => go(location.hash.replace('#', '') || 'home'));
+$('#navToggle').onclick = () => { $('#navToggle').classList.toggle('open'); $('#navLinks').classList.toggle('open'); };
 
-// Nav & Scroll
-const nav = $('#nav'), toggle = $('#navToggle'), links = $('#navLinks');
-function setNav() { nav.classList.toggle('solid', !$('#home').classList.contains('active')); }
-window.addEventListener('scroll', setNav, {passive: true});
-function closeMenu() { toggle.classList.remove('open'); links.classList.remove('open'); }
-toggle.addEventListener('click', () => { toggle.classList.toggle('open'); links.classList.toggle('open'); });
+// Reveal on Scroll
+document.querySelectorAll('.reveal').forEach(e => {
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      entries.forEach(ent => { if(ent.isIntersecting) ent.target.classList.add('in'); });
+    }, {threshold: 0.1}).observe(e);
+  } else { e.classList.add('in'); }
+});
 
-// Scroll Reveals
-document.querySelectorAll('.page-head, .pj-row, .about-portrait, .feature').forEach(e => e.classList.add('reveal'));
-if('IntersectionObserver' in window) {
-  const io = new IntersectionObserver((ents) => { ents.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold: .1});
-  document.querySelectorAll('.reveal').forEach(e => io.observe(e));
-} else {
-  document.querySelectorAll('.reveal').forEach(e => e.classList.add('in'));
+// Video reel initialization (optional)
+if(CONFIG.heroReelVideo) {
+  const v = document.createElement('video');
+  v.className = 'hero-video-el';
+  v.muted = true; v.autoplay = true; v.loop = true; v.playsInline = true;
+  v.src = CONFIG.heroReelVideo;
+  $('#heroMedia').appendChild(v);
 }
 
-// Init
 go(location.hash.replace('#', '') || 'home');
 </script>
-</body>
-</html>
+
+
+</body></html>
