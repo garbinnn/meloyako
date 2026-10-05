@@ -1,967 +1,510 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Meloyako</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Portfolio &amp; Film</title>
 
 <!-- Favicon / Thumbnail icons (Cloudflare Pages root or CDN paths) -->
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
 
-<!-- Social Share Thumbnails (Open Graph / Twitter Card) -->
-<meta property="og:title" content="Portfolio — Visual Stories & Film">
-<meta property="og:description" content="Cinematic exploration of light, wilderness, and street architecture.">
+<!-- Social Share Thumbnails (Open Graph / Twitter Preview) -->
+<meta property="og:title" content="Your Name — Photography &amp; Film">
+<meta property="og:description" content="Cinematic photography and creative portfolio.">
 <meta property="og:image" content="https://yourdomain.pages.dev/assets/images/share-thumbnail.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://yourdomain.pages.dev/assets/images/share-thumbnail.jpg">
 
-<!-- Google Fonts (Playfair Display + Plus Jakarta Sans) -->
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
 <style>
-:root {
-  /* Deep Forest Green Palette */
-  --bg: #09110D;
-  --bg-alt: #0D1712;
-  --surface: #13221B;
-  --surface-card: #182B22;
-  --ink: #EDF3EE;
-  --muted: #8E9F94;
-  --faint: rgba(237, 243, 238, 0.6);
-  --line: rgba(237, 243, 238, 0.12);
-  --line-strong: rgba(237, 243, 238, 0.22);
+:root{
+  /* Extracted Aviation Palette */
+  --bg: #0B0E14;
+  --bg-2: #10151E;
+  --surface: #151C28;
+  --ink: #EEEEED;
+  --muted: #8E9BAE;
+  --faint: rgba(238, 238, 237, 0.62);
+  --line: rgba(238, 238, 237, 0.12);
+  --line-2: rgba(238, 238, 237, 0.22);
   
-  /* Accents */
-  --emerald: #2E6F40;
-  --accent: #52B788;
-  --accent-glow: rgba(82, 183, 136, 0.18);
-  --sand: #D8E2DC;
+  /* Accents from photo feed */
+  --gold: #98B1D1;         /* Primary highlight: Sky Blue */
+  --accent-blue: #29559A;  /* Livery Blue */
+  --accent-red: #B22C33;   /* Livery Red */
+  --runway-sand: #8F8C78;
+  --grass-gold: #C1B259;
 
-  /* Typography */
-  --serif: 'Playfair Display', Georgia, serif;
-  --sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --pad: clamp(20px, 5vw, 80px);
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-weight: 300;
-  line-height: 1.6;
-  letter-spacing: -0.015em;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-img { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-button { font-family: inherit; color: inherit; background: none; border: none; cursor: pointer; }
-::selection { background: var(--accent); color: #050A07; }
-
-/* Subtle organic grain overlay */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: "Inter", system-ui, sans-serif;
+  --pad: clamp(20px, 5vw, 72px);
+  --ease: cubic-bezier(.4, 0, .15, 1);
 }
 
-/* Placeholder styling with subtle moss green gradients */
-.ph {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #15271F, #0A140F 70%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  isolation: isolate;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-weight:300;line-height:1.55;letter-spacing:-.02em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-.ph::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(100% 70% at 30% 20%, rgba(82, 183, 136, 0.12), transparent 60%);
-}
-.ph::after {
-  content: attr(data-label);
-  position: absolute;
-  font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  color: rgba(237, 243, 238, 0.35);
-  text-transform: uppercase;
-  padding: 0 16px;
-  text-align: center;
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
+::selection{background:var(--accent-blue);color:#FFFFFF}
+
+body::after{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* =================== NAVIGATION =================== */
-.nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px var(--pad);
-  transition: background 0.4s var(--ease), padding 0.3s var(--ease), border-color 0.4s var(--ease);
-  background: linear-gradient(180deg, rgba(9, 17, 13, 0.85), transparent);
-}
-.nav.solid {
-  background: rgba(9, 17, 13, 0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--ink);
-  transition: opacity 0.3s;
-}
-.brand:hover { opacity: 0.85; }
-.brand-logo-img {
-  height: clamp(26px, 3.2vw, 34px);
+.ph{position:relative;overflow:hidden;background:linear-gradient(135deg,#151D2A,#0C1119 70%);
+  display:flex;align-items:center;justify-content:center;isolation:isolate}
+.ph::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 80% at 30% 20%,rgba(152, 177, 209, 0.15),transparent 60%);}
+.ph::after{content:attr(data-label);position:absolute;font-family:var(--sans);
+  font-size:11px;letter-spacing:.14em;color:rgba(238, 238, 237, 0.35);text-transform:uppercase;
+  padding:0 14px;text-align:center}
+.ph.h1{background:linear-gradient(135deg,#182333,#0C1119)}
+.ph.h2{background:linear-gradient(135deg,#1C2422,#0D1211)}
+.ph.h3{background:linear-gradient(135deg,#231C20,#120E10)}
+
+/* =================== NAV =================== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px var(--pad);transition:background .5s var(--ease),padding .4s var(--ease);
+  background:linear-gradient(180deg,rgba(11, 14, 20, 0.85),transparent);}
+.nav.solid{background:rgba(11, 14, 20, 0.94);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);padding-top:16px;padding-bottom:16px}
+
+.brand{display:inline-flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none}
+.brand-logo-img{
+  height: clamp(28px, 3.5vw, 36px);
   width: auto;
   object-fit: contain;
   display: block;
 }
-.brand-avatar {
-  width: 36px;
-  height: 36px;
+.brand-avatar{
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1.5px solid var(--accent);
+  display: block;
+  border: 1px solid var(--line-2);
 }
-.brand-text {
-  font-family: var(--serif);
+.brand-text{
+  font-family:var(--serif);
+  font-style:italic;
   font-size: clamp(20px, 2.5vw, 24px);
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing:.02em;
 }
 
-.nav-links {
-  display: flex;
-  gap: 36px;
-  align-items: center;
-}
-.nav-links a {
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--faint);
-  transition: color 0.3s var(--ease);
-  position: relative;
-  padding: 6px 0;
-}
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--ink);
-}
-.nav-links a.active::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: -2px;
-  height: 2px;
-  background: var(--accent);
-  border-radius: 2px;
-}
-
-.nav-toggle {
-  display: none;
-  width: 32px;
-  height: 32px;
-  position: relative;
-}
-.nav-toggle span {
-  position: absolute;
-  left: 4px; right: 4px;
-  height: 1.5px;
-  background: var(--ink);
-  transition: 0.35s var(--ease);
-}
-.nav-toggle span:nth-child(1) { top: 11px; }
-.nav-toggle span:nth-child(2) { bottom: 11px; }
-.nav-toggle.open span:nth-child(1) { top: 15px; transform: rotate(45deg); }
-.nav-toggle.open span:nth-child(2) { bottom: 15px; transform: rotate(-45deg); }
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:13px;letter-spacing:.04em;color:var(--faint);
+  transition:color .3s var(--ease);position:relative;padding:4px 0}
+.nav-links a:hover, .nav-links a.active{color:var(--ink)}
+.nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--gold)}
+.nav-toggle{display:none;width:30px;height:30px;position:relative}
+.nav-toggle span{position:absolute;left:4px;right:4px;height:1.5px;background:var(--ink);transition:.35s var(--ease)}
+.nav-toggle span:nth-child(1){top:10px}
+.nav-toggle span:nth-child(2){bottom:10px}
+.nav-toggle.open span:nth-child(1){top:14px;transform:rotate(45deg)}
+.nav-toggle.open span:nth-child(2){bottom:14px;transform:rotate(-45deg)}
 
 /* =================== PAGE SYSTEM =================== */
-.page { display: none; animation: fade 0.6s var(--ease); }
-.page.active { display: block; }
-@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.page{display:none;animation:fade .7s var(--ease)}
+.page.active{display:block}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.page-head{padding:150px var(--pad) 40px}
+.page-head .kicker{font-size:12px;letter-spacing:.22em;color:var(--muted);margin-bottom:18px;text-transform:uppercase}
+.page-head h1{font-family:var(--sans);font-weight:700;font-size:clamp(38px,7vw,84px);line-height:1;letter-spacing:-.035em}
+.page-head p{color:var(--faint);max-width:56ch;margin-top:22px;font-size:16px}
 
-.page-head {
-  padding: clamp(140px, 18vh, 180px) var(--pad) 40px;
-}
-.page-head .kicker {
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  font-weight: 600;
-}
-.page-head h1 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(42px, 7vw, 84px);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-}
-.page-head p {
-  color: var(--muted);
-  max-width: 54ch;
-  margin-top: 18px;
-  font-size: 16px;
-}
+/* =================== HERO =================== */
+.hero{height:100svh;min-height:600px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-media{position:absolute;inset:0;z-index:0}
+.hero-fallback{position:absolute;inset:0;z-index:0;
+  background:radial-gradient(120% 90% at 30% 20%,#172439,#0B0E14 62%),linear-gradient(120deg,#10151E,#080B10);
+  background-size:170% 170%;animation:heroPan 32s var(--ease) infinite alternate}
+@keyframes heroPan{from{background-position:0% 0%}to{background-position:100% 100%}}
+.hero-video-el{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
+.hero-media::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 100% at 50% 30%,transparent 30%,rgba(11, 14, 20, 0.55) 100%),
+             linear-gradient(180deg,rgba(11, 14, 20, 0.35),rgba(11, 14, 20, 0.15) 40%,rgba(11, 14, 20, 0.9))}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:0 24px}
+.hero-mark{width:min(74vw,540px);height:auto;filter:drop-shadow(0 2px 40px rgba(0,0,0,.5));margin:0 auto}
+.hero-sub{margin-top:22px;font-size:14px;letter-spacing:.28em;color:var(--faint);text-transform:uppercase}
+.scrollcue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;
+  font-size:11px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase;
+  display:flex;flex-direction:column;align-items:center;gap:10px}
+.scrollcue i{width:1px;height:38px;background:linear-gradient(var(--faint),transparent);display:block;animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);opacity:.3;transform-origin:top}50%{transform:scaleY(1);opacity:1;transform-origin:top}}
 
-/* =================== HERO SECTION =================== */
-.hero {
-  min-height: 100svh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 0 var(--pad);
-}
-.hero-media { position: absolute; inset: 0; z-index: 0; }
-.hero-fallback {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(100% 90% at 50% 20%, #152B20, #09110D 68%);
-  background-size: 140% 140%;
-  animation: subtleGlow 20s var(--ease) infinite alternate;
-}
-@keyframes subtleGlow {
-  from { background-position: 0% 0%; }
-  to { background-position: 100% 100%; }
-}
-.hero-video-el {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  pointer-events: none;
-}
-.hero-media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(90% 80% at 50% 40%, transparent 20%, rgba(9, 17, 13, 0.7) 100%),
-              linear-gradient(180deg, rgba(9, 17, 13, 0.3) 0%, rgba(9, 17, 13, 0.95) 100%);
-}
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 860px;
-}
-.hero-mark {
-  width: min(72vw, 480px);
-  height: auto;
-  filter: drop-shadow(0 4px 30px rgba(0, 0, 0, 0.6));
-  margin: 0 auto;
-}
-.hero-sub {
-  margin-top: 24px;
-  font-size: 13px;
-  letter-spacing: 0.28em;
-  color: var(--accent);
-  text-transform: uppercase;
-  font-weight: 500;
-}
-.scrollcue {
-  position: absolute;
-  bottom: 34px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  color: var(--faint);
-  text-transform: uppercase;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-.scrollcue i {
-  width: 1px;
-  height: 38px;
-  background: linear-gradient(var(--accent), transparent);
-  animation: cue 2.4s var(--ease) infinite;
-}
-@keyframes cue {
-  0%, 100% { transform: scaleY(0.4); opacity: 0.3; transform-origin: top; }
-  50% { transform: scaleY(1); opacity: 1; transform-origin: top; }
-}
+/* =================== SHARED COMPONENTS =================== */
+.cta{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+  border:1px solid var(--line-2);border-radius:100px;padding:13px 28px;
+  transition:background .45s var(--ease),color .45s var(--ease),border-color .45s var(--ease),transform .45s var(--ease)}
+.cta:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);transform:translateY(-2px)}
+.eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity 1.05s var(--ease),transform 1.05s var(--ease)}
+.reveal.in{opacity:1;transform:none}
 
-/* =================== HOME: INTRO & BENTO CARDS =================== */
-.intro {
-  position: relative;
-  overflow: hidden;
-  padding: clamp(90px, 14vh, 150px) var(--pad);
-  text-align: center;
-  border-bottom: 1px solid var(--line);
-  background: var(--bg-alt);
-}
-.intro-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-position: center;
-  background-size: cover;
-  opacity: 0.15;
-}
-.intro-content { position: relative; z-index: 1; }
-.intro .eyebrow { display: block; margin-bottom: 18px; color: var(--accent); }
-.intro-h {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(32px, 5.2vw, 62px);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin: 0 auto 24px;
-  max-width: 22ch;
-}
-.intro-p {
-  color: var(--muted);
-  font-size: clamp(16px, 1.8vw, 19px);
-  max-width: 58ch;
-  margin: 0 auto 36px;
-}
-.socials {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-}
-.social {
-  display: inline-flex;
-  color: var(--faint);
-  transition: color 0.3s, transform 0.3s var(--ease);
-}
-.social svg { width: 22px; height: 22px; display: block; }
-.social:hover { color: var(--accent); transform: translateY(-3px); }
+.intro{position:relative;overflow:hidden;padding:clamp(90px,14vh,165px) var(--pad) clamp(74px,10vh,120px);text-align:center;border-bottom:1px solid var(--line)}
+.intro-bg{position:absolute;inset:0;z-index:0;background:#0B0E14 center/cover no-repeat; opacity: 0.3;}
+.intro-content{position:relative;z-index:1;text-shadow:0 2px 32px rgba(0,0,0,.8),0 1px 4px rgba(0,0,0,.5)}
+.intro .eyebrow{display:block;margin-bottom:22px}
+.intro-h{font-family:var(--sans);font-style:italic;font-weight:400;font-size:clamp(32px,5.5vw,66px);line-height:1.08;letter-spacing:-.02em;margin:0 auto 28px;max-width:18ch}
+.intro-p{color:var(--faint);font-size:clamp(16px,2vw,20px);max-width:52ch;margin:0 auto 34px}
+.socials{display:flex;justify-content:center;gap:24px}
+.social{display:inline-flex;color:#EEEEED;opacity:.55;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.social svg{width:23px;height:23px;display:block}
+.social:hover{opacity:1;transform:translateY(-3px)}
 
-/* Home Callout Showcase Section */
-.bento-section {
-  padding: clamp(60px, 10vh, 120px) var(--pad);
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(24px, 4vw, 48px);
-}
-.bento-card {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: clamp(28px, 4vw, 44px);
-  min-height: 440px;
-  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
-}
-.bento-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-4px);
-}
-.bento-card-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-.bento-card-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 1.2s var(--ease), filter 0.6s var(--ease);
-  filter: brightness(0.65) saturate(0.9);
-}
-.bento-card:hover .bento-card-bg img {
-  transform: scale(1.05);
-  filter: brightness(0.75) saturate(1.1);
-}
-.bento-card-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(180deg, transparent 20%, rgba(9, 17, 13, 0.9) 85%);
-}
-.bento-body {
-  position: relative;
-  z-index: 2;
-}
-.bento-label {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 12px;
-  font-weight: 600;
-  display: block;
-}
-.bento-body h3 {
-  font-family: var(--serif);
-  font-size: clamp(28px, 3.2vw, 40px);
-  font-weight: 400;
-  line-height: 1.1;
-  margin-bottom: 12px;
-}
-.bento-body p {
-  color: var(--muted);
-  font-size: 15px;
-  max-width: 38ch;
-  margin-bottom: 24px;
-}
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink);
-  font-weight: 600;
-  padding: 12px 26px;
-  border-radius: 100px;
-  border: 1px solid var(--line-strong);
-  background: rgba(19, 34, 27, 0.4);
-  backdrop-filter: blur(8px);
-  transition: all 0.35s var(--ease);
-}
-.cta-button:hover {
-  background: var(--accent);
-  color: #050A07;
-  border-color: var(--accent);
-}
+.feature{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);align-items:center;padding:clamp(36px,6vh,80px) var(--pad)}
+.feature.reverse .feature-media{order:2}
+.feature-media{position:relative;display:block;aspect-ratio:4/3;overflow:hidden}
+.feature-media .ph{position:absolute;inset:0}
+.feature-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.feature-media:hover .feature-img{transform:scale(1.04)}
+.feature-label{display:block;margin-bottom:18px; font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.feature-body h3{font-family:var(--sans);font-weight:700;font-size:clamp(28px,4vw,50px);line-height:1.02;letter-spacing:-.032em;margin-bottom:20px}
+.feature-body p{color:rgba(238,238,237,.5);font-size:15px;line-height:1.6;max-width:42ch;margin-bottom:30px}
 
-/* =================== PORTFOLIO GALLERY =================== */
-.pf-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(14px, 3vw, 36px);
-  padding: 18px var(--pad) 0;
-  position: sticky;
-  top: 74px;
-  z-index: 40;
-  background: linear-gradient(180deg, var(--bg) 76%, transparent);
-  border-bottom: 1px solid var(--line);
-}
-.pf-tab {
-  font-size: clamp(14px, 1.4vw, 17px);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--muted);
-  padding: 8px 0 16px;
-  position: relative;
-  transition: color 0.3s;
-}
-.pf-tab::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: -1px;
-  height: 2px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s var(--ease);
-}
-.pf-tab:hover, .pf-tab.active { color: var(--ink); }
-.pf-tab.active::after { transform: scaleX(1); }
+/* =================== PORTFOLIO =================== */
+.pf-tabs{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,40px);padding:22px var(--pad) 0;position:sticky;top:76px;z-index:40;
+  background:linear-gradient(180deg,var(--bg) 74%,transparent);border-bottom:1px solid var(--line)}
+.pf-tab{font-size:clamp(15px,1.6vw,20px);letter-spacing:-.02em;color:var(--muted);padding:4px 0 16px;
+  position:relative;background:none;border:none;border-radius:0;transition:color .3s var(--ease)}
+.pf-tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--ink);
+  transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.pf-tab:hover, .pf-tab.active{color:var(--ink)}
+.pf-tab.active::after{transform:scaleX(1)}
+.pf-gallery{padding:0 0 90px}
+.pf-set{display:none}
+.pf-set.active{display:block}
+.pf-sectionhead{position:relative;margin:30px var(--pad) 32px;aspect-ratio:21/7;min-height:210px;
+  overflow:hidden;display:flex;align-items:flex-end;padding:clamp(24px,4vw,44px)}
+.pf-sectionhead-inner h2{font-family:var(--sans);font-weight:700;font-size:clamp(30px,5vw,58px);letter-spacing:-.038em;line-height:1}
+.pf-sectionhead-inner p{color:rgba(238,238,237,.62);font-size:15px;margin-top:10px;max-width:52ch}
+.pf-grid{columns:3;column-gap:14px;padding:0 var(--pad)}
+.pf-item{break-inside:avoid;margin-bottom:14px;cursor:pointer;position:relative;overflow:hidden}
+.media-tile{position:relative;overflow:hidden;background:#151C28;width:100%}
+.media-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s var(--ease),filter .5s}
+.media-tile.natural img{height:auto;object-fit:contain;opacity:0;transition:opacity .7s var(--ease)}
+.media-tile.natural img.loaded{opacity:1}
+.pf-item:hover .media-tile img{transform:scale(1.05);filter:brightness(1.08)}
 
-.pf-gallery { padding: 0 0 100px; }
-.pf-set { display: none; }
-.pf-set.active { display: block; }
-
-.pf-sectionhead {
-  padding: 36px var(--pad) 28px;
-}
-.pf-sectionhead-inner h2 {
-  font-family: var(--serif);
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 400;
-  margin-bottom: 6px;
-}
-.pf-sectionhead-inner p {
-  color: var(--muted);
-  font-size: 15px;
-  max-width: 52ch;
-}
-
-.pf-grid {
-  columns: 3;
-  column-gap: 16px;
-  padding: 0 var(--pad);
-}
-.pf-item {
-  break-inside: avoid;
-  margin-bottom: 16px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  border-radius: 4px;
-  background: var(--surface);
-  transition: transform 0.4s var(--ease);
-}
-.pf-item:hover { transform: translateY(-3px); }
-.media-tile {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-.media-tile img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 1s var(--ease), filter 0.5s;
-}
-.pf-item:hover .media-tile img {
-  transform: scale(1.04);
-  filter: brightness(1.06);
-}
-
-/* =================== CONTACT SECTION =================== */
-.contact-container {
-  padding: 20px var(--pad) 100px;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: clamp(40px, 7vw, 100px);
-  align-items: start;
-}
-.contact-form {
-  background: var(--bg-alt);
-  padding: clamp(32px, 5vw, 54px);
-  border-radius: 8px;
-  border: 1px solid var(--line);
-}
-.field { margin-bottom: 24px; }
-.field label {
-  display: block;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-.field input, .field textarea {
-  width: 100%;
-  background: rgba(19, 34, 27, 0.4);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: 15px;
-  padding: 14px 16px;
-  transition: border-color 0.3s, background 0.3s;
-}
-.field input:focus, .field textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: rgba(19, 34, 27, 0.8);
-}
-.field textarea { resize: vertical; min-height: 130px; }
-.send-btn {
-  margin-top: 8px;
-  padding: 16px 44px;
-  background: var(--accent);
-  color: #050A07;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: 100px;
-  transition: all 0.3s var(--ease);
-}
-.send-btn:hover {
-  background: #74C69D;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(82, 183, 136, 0.25);
-}
-.form-note {
-  margin-top: 18px;
-  font-size: 13px;
-  min-height: 20px;
-}
-
-.contact-sidebar {
-  padding-top: 16px;
-}
-.contact-sidebar h4 {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-.contact-sidebar a {
-  display: block;
-  color: var(--ink);
-  font-size: 16px;
-  margin-bottom: 30px;
-  transition: color 0.3s;
-}
-.contact-sidebar a:hover { color: var(--accent); }
+/* =================== CONTACT =================== */
+.contact-wrap{padding:20px var(--pad) 80px;display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,6vw,90px);align-items:start}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line-2);
+  color:var(--ink);font-family:var(--sans);font-size:16px;padding:10px 0}
+.field textarea{resize:vertical;min-height:120px}
+.send{margin-top:8px;padding:15px 40px;background:var(--ink);color:var(--bg);font-size:14px;letter-spacing:.05em;border-radius:100px;transition:.3s var(--ease)}
+.send:hover{background:var(--gold)}
+.contact-side h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-weight:500}
+.contact-side a{display:block;color:var(--faint);margin-bottom:12px;font-size:15px}
 
 /* =================== LIGHTBOX =================== */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  background: rgba(6, 12, 9, 0.96);
-  backdrop-filter: blur(8px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-}
-.lightbox.open { display: flex; }
-.lb-close {
-  position: absolute;
-  top: 28px; right: 34px;
-  font-size: 32px;
-  color: var(--faint);
-  cursor: pointer;
-  transition: color 0.3s;
-}
-.lb-close:hover { color: var(--ink); }
-.lb-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 40px;
-  color: var(--faint);
-  padding: 24px;
-  transition: color 0.3s;
-}
-.lb-nav:hover { color: var(--accent); }
-.lb-nav.prev { left: 12px; }
-.lb-nav.next { right: 12px; }
-.lb-media {
-  max-width: min(92vw, 1200px);
-  max-height: 86vh;
-  object-fit: contain;
-  display: block;
-  border-radius: 2px;
-}
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(8,11,16,.96);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;padding:40px}
+.lightbox.open{display:flex}
+.lb-close{position:absolute;top:26px;right:30px;font-size:30px;color:var(--faint);cursor:pointer}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:40px;color:var(--faint);padding:20px}
+.lb-nav.prev{left:10px}.lb-nav.next{right:10px}
+.lb-media{max-width:min(94vw,1200px);max-height:86vh;width:auto;height:auto;object-fit:contain;display:block}
 
 /* =================== FOOTER =================== */
-.site-footer {
-  border-top: 1px solid var(--line);
-  padding: 80px var(--pad) 44px;
-  background: #060B08;
-}
-.foot-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 40px;
-  align-items: start;
-}
-.foot-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-.foot-brand-logo { height: 32px; width: auto; object-fit: contain; }
-.foot-handle {
-  display: block;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 16px;
-  color: var(--muted);
-}
-.foot-col h4 {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 18px;
-  font-weight: 600;
-}
-.foot-col a {
-  display: block;
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 12px;
-  transition: color 0.3s;
-}
-.foot-col a:hover { color: var(--ink); }
-.foot-base {
-  margin-top: 60px;
-  padding-top: 26px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 14px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-/* Reveal Animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
-}
-.reveal.in { opacity: 1; transform: none; }
+.site-footer{border-top:1px solid var(--line);padding:70px var(--pad) 40px;background:var(--bg-2)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;align-items:start}
+.foot-brand{display:inline-flex;align-items:center;gap:12px;margin-bottom:6px}
+.foot-brand-logo{height:30px;width:auto;object-fit:contain}
+.foot-handle{display:block;font-family:var(--sans);font-weight:500;font-size:18px;color:var(--muted);margin:0}
+.foot-col h4{font-size:12px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-bottom:18px;font-weight:500}
+.foot-col a{display:block;color:var(--faint);font-size:14px;margin-bottom:11px}
+.foot-base{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:13px}
 
 /* =================== RESPONSIVE =================== */
-@media (max-width: 900px) {
-  .nav-links {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    z-index: 120;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: clamp(20px, 4vh, 36px);
-    background: var(--bg);
-    padding: max(100px, calc(env(safe-area-inset-top, 0px) + 84px)) 24px max(48px, env(safe-area-inset-bottom, 0px));
-    transform: translateX(100%);
-    transition: transform 0.45s var(--ease);
-    overflow-y: auto;
-  }
-  .nav-links a:first-child { margin-top: auto; }
-  .nav-links a:last-child { margin-bottom: auto; }
-  .nav-links.open { transform: translateX(0); }
-  .nav-links a { font-size: clamp(18px, 4.8vw, 22px); }
-  .nav.solid { background: rgba(9, 17, 13, 0.98); }
-  .nav-toggle { display: block; z-index: 130; }
-  
-  .bento-section { grid-template-columns: 1fr; }
-  .contact-container { grid-template-columns: 1fr; }
-  .pf-grid { columns: 2; }
-  .foot-grid { grid-template-columns: 1fr 1fr; }
+@media(max-width:900px){
+  .nav-links{position:fixed;inset:0;width:100%;z-index:120;flex-direction:column;justify-content:flex-start;align-items:center;
+    gap:clamp(18px,3.6vh,32px);background:var(--bg);
+    padding:max(96px,calc(env(safe-area-inset-top,0px) + 80px)) 24px max(48px,env(safe-area-inset-bottom,0px)) 24px;
+    transform:translateX(100%);transition:transform .45s var(--ease);
+    overflow-y:auto;-webkit-overflow-scrolling:touch;}
+  .nav-links a:first-child{margin-top:auto}
+  .nav-links a:last-child{margin-bottom:auto}
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{font-size:clamp(17px,4.6vw,22px);line-height:1.25;padding:4px 0}
+  .nav.solid{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(11,14,20,.96)}
+  .nav-toggle{display:block;z-index:130}
+  .page-head{padding:120px var(--pad) 30px}
+  .pf-grid{columns:2}
+  .contact-wrap{grid-template-columns:1fr}
+  .feature{grid-template-columns:1fr;gap:20px}
+  .feature.reverse .feature-media{order:0}
+  .feature-media{aspect-ratio:3/2}
+  .foot-grid{grid-template-columns:1fr 1fr}
 }
-@media (max-width: 560px) {
-  .brand-logo-img { height: 26px; }
-  .brand-text { font-size: 20px; }
-  .pf-tabs { top: 66px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
-  .pf-tabs::-webkit-scrollbar { display: none; }
-  .pf-grid { columns: 2; column-gap: 10px; }
-  .pf-item { margin-bottom: 10px; }
-  .foot-grid { grid-template-columns: 1fr; }
+@media(max-width:560px){
+  .brand-logo-img{height: 26px;}
+  .brand-text{font-size: 19px;}
+  .pf-tabs{top:66px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .pf-tabs::-webkit-scrollbar{display:none}
+  .pf-grid{columns:2;column-gap:10px}
+  .foot-grid{grid-template-columns:1fr}
+  .lightbox{padding:16px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#home" class="brand" data-nav id="brandNavEl"></a>
+  <a href="#home" class="brand" data-nav="" id="brandNavEl"><img class="brand-logo-img" src="/assets/images/logo-nav.png" alt="Your Brand"></a>
   <div class="nav-links" id="navLinks">
-    <a href="#home" data-nav>Home</a>
-    <a href="#portfolio" data-nav>Portfolio</a>
-    <a href="#contact" data-nav>Contact</a>
+    <a href="#home" data-nav="" class="active">Home</a>
+    <a href="#portfolio" data-nav="">Portfolio</a>
+    <a href="#contact" data-nav="">Contact</a>
   </div>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle Menu">
-    <span></span><span></span>
-  </button>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span></button>
 </nav>
 
-<!-- PAGE: HOME -->
+<!-- HOME -->
 <main class="page active" id="home">
   <section class="hero">
-    <div class="hero-media" id="heroMedia">
-      <div class="hero-fallback"></div>
+    <div class="hero-media" id="heroMedia"><div class="hero-fallback"></div></div>
+    <div class="hero-inner reveal in">
+      <div id="heroHeroBrandEl"><img class="hero-mark" src="/assets/images/logo-hero.png" alt="Your Brand"></div>
+      <div class="hero-sub" id="heroSubEl">Photography &amp; Film</div>
     </div>
-    <div class="hero-inner reveal">
-      <div id="heroBrandContainer"></div>
-      <div class="hero-sub" id="heroSubEl">Visual Stills &amp; Motion</div>
-    </div>
-    <div class="scrollcue">Discover<i></i></div>
+    <div class="scrollcue">Scroll<i></i></div>
   </section>
 
-  <!-- Editorial Intro -->
-  <section class="intro reveal">
-    <div class="intro-bg" id="introBgEl"></div>
+  <section class="intro reveal in">
+    <div class="intro-bg" id="introBgEl" style="background-image: url(&quot;/assets/images/intro-bg.jpg&quot;);"></div>
     <div class="intro-content">
-      <span class="eyebrow" id="introEyebrowEl">The Philosophy</span>
-      <h2 class="intro-h" id="introHeadingEl">In pursuit of honest light and timeless stillness.</h2>
-      <p class="intro-p" id="introTextEl">Framing the balance between wild landscapes, quiet architectures, and human presence.</p>
-      <div class="socials" id="socialLinksEl"></div>
+      <span class="eyebrow" id="introEyebrowEl">Photography &amp; Film</span>
+      <h2 class="intro-h" id="introHeadingEl">everything matters, nothing's important</h2>
+      <p class="intro-p" id="introTextEl">Capturing visual moments and telling stories through cinematic composition.</p>
+      <div class="socials" id="socialLinksEl"><a class="social" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17-.21-.55-.47-.94-.88-1.35-.41-.41-.8-.67-1.35-.88-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07zm0 2.76a5.46 5.46 0 110 10.92 5.46 5.46 0 010-10.92zm0 9a3.54 3.54 0 100-7.08 3.54 3.54 0 000 7.08zm5.68-9.15a1.27 1.27 0 11-2.55 0 1.27 1.27 0 012.55 0z"></path></svg></a></div>
     </div>
   </section>
 
-  <!-- Bento-Style Feature Section -->
-  <section class="bento-section">
-    <div class="bento-card reveal">
-      <div class="bento-card-bg">
-        <img id="featPortfolioImg" src="/assets/images/feat-portfolio.jpg" alt="Selected Works" onerror="this.parentElement.innerHTML='<div class=\\'ph\\' style=\\'position:absolute;inset:0\\'></div>'">
-      </div>
-      <div class="bento-card-overlay"></div>
-      <div class="bento-body">
-        <span class="bento-label">Collections</span>
-        <h3>Selected Work</h3>
-        <p>A curated curation of atmospheric landscape, urban form, and tactile frames.</p>
-        <a class="cta-button" href="#portfolio" data-nav>Explore Archive &rarr;</a>
-      </div>
+  <!-- Feature callouts on Home (Linking to Portfolio and Contact) -->
+  <div id="homeFeatures"><section class="feature reveal in">
+    <a class="feature-media" href="#portfolio" data-nav="">
+      <div class="ph h1" data-label="Portfolio"></div>
+      <img class="feature-img" src="/assets/images/feat-portfolio.jpg" alt="Portfolio" onerror="this.style.display='none'" style="display: none;">
+    </a>
+    <div class="feature-body">
+      <span class="feature-label">Selected Work</span>
+      <h3>Portfolio</h3>
+      <p>Browse full collections across landscape, street, and creative photography.</p>
+      <a class="cta" href="#portfolio" data-nav="">Explore</a>
+    </div></section><section class="feature reveal reverse in">
+    <a class="feature-media" href="#contact" data-nav="">
+      <div class="ph h2" data-label="Get in Touch"></div>
+      <img class="feature-img" src="/assets/images/feat-contact.jpg" alt="Get in Touch" onerror="this.style.display='none'" style="display: none;">
+    </a>
+    <div class="feature-body">
+      <span class="feature-label">Commission &amp; Licensing</span>
+      <h3>Get in Touch</h3>
+      <p>Available for commercial shoots, editorial assignments, and creative collaborations.</p>
+      <a class="cta" href="#contact" data-nav="">Explore</a>
+    </div></section></div>
+  <div id="footerHome">
+<footer class="site-footer">
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand"><img class="foot-brand-logo" src="/assets/images/logo-nav.png" alt="Your Brand"></div>
+      <span class="foot-handle">@yourhandle</span>
     </div>
-
-    <div class="bento-card reveal">
-      <div class="bento-card-bg">
-        <img id="featContactImg" src="/assets/images/feat-contact.jpg" alt="Collaboration" onerror="this.parentElement.innerHTML='<div class=\\'ph\\' style=\\'position:absolute;inset:0\\'></div>'">
-      </div>
-      <div class="bento-card-overlay"></div>
-      <div class="bento-body">
-        <span class="bento-label">Inquiries</span>
-        <h3>Commission &amp; Licensing</h3>
-        <p>Available for visual commissions, editorial features, and commercial shoots worldwide.</p>
-        <a class="cta-button" href="#contact" data-nav>Start a Conversation &rarr;</a>
-      </div>
+    <div class="foot-col">
+      <h4>Navigation</h4>
+      <a href="#home" data-nav="">Home</a>
+      <a href="#portfolio" data-nav="">Portfolio</a>
+      <a href="#contact" data-nav="">Contact</a>
     </div>
-  </section>
-
-  <div id="footerHome"></div>
+    <div class="foot-col">
+      <h4>Connect</h4>
+      <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
+      <a href="#contact" data-nav="">Direct Message</a>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>© 2026 Your Name · Studio</span>
+    <span>Your City, Country</span>
+  </div>
+</footer></div>
 </main>
 
-<!-- PAGE: PORTFOLIO -->
+<!-- PORTFOLIO -->
 <main class="page" id="portfolio">
   <header class="page-head">
-    <div class="kicker">Archive</div>
+    <div class="kicker">Selected work</div>
     <h1>Portfolio</h1>
-    <p>A collection of medium-format and 35mm observations. Click any image to view details.</p>
+    <p>A showcase of the world as I capture it. Tap any frame to view it larger.</p>
   </header>
-  <div class="pf-tabs" id="pfTabs"></div>
-  <div class="pf-gallery" id="pfGallery"></div>
-  <div id="footerPortfolio"></div>
+  <div class="pf-tabs" id="pfTabs"><button class="pf-tab active" data-cat="landscape">Landscape</button><button class="pf-tab" data-cat="street">Street</button><button class="pf-tab" data-cat="creative">Creative</button></div>
+  <div class="pf-gallery" id="pfGallery"><div class="pf-set active" id="set-landscape"><div class="pf-sectionhead"><div class="pf-sectionhead-inner"><span class="eyebrow">Portfolio</span><h2>Landscape</h2><p>Travel and landscape, from mountaintops to coastlines.</p></div></div><div class="pf-grid"><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/landscape-01.jpg" loading="lazy"></div></div><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/landscape-02.jpg" loading="lazy"></div></div></div></div><div class="pf-set" id="set-street"><div class="pf-sectionhead"><div class="pf-sectionhead-inner"><span class="eyebrow">Portfolio</span><h2>Street</h2><p>Light, people, and fleeting moments in the city.</p></div></div><div class="pf-grid"><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/street-01.jpg" loading="lazy"></div></div><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/street-02.jpg" loading="lazy"></div></div></div></div><div class="pf-set" id="set-creative"><div class="pf-sectionhead"><div class="pf-sectionhead-inner"><span class="eyebrow">Portfolio</span><h2>Creative</h2><p>Experiments, concepts, and personal fine-art work.</p></div></div><div class="pf-grid"><div class="pf-item"><div class="media-tile natural"><img src="/assets/images/portfolio/creative-01.jpg" loading="lazy"></div></div></div></div></div>
+  <div id="footerPortfolio">
+<footer class="site-footer">
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand"><img class="foot-brand-logo" src="/assets/images/logo-nav.png" alt="Your Brand"></div>
+      <span class="foot-handle">@yourhandle</span>
+    </div>
+    <div class="foot-col">
+      <h4>Navigation</h4>
+      <a href="#home" data-nav="">Home</a>
+      <a href="#portfolio" data-nav="">Portfolio</a>
+      <a href="#contact" data-nav="">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h4>Connect</h4>
+      <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
+      <a href="#contact" data-nav="">Direct Message</a>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>© 2026 Your Name · Studio</span>
+    <span>Your City, Country</span>
+  </div>
+</footer></div>
 </main>
 
-<!-- PAGE: CONTACT -->
+<!-- CONTACT -->
 <main class="page" id="contact">
   <header class="page-head">
-    <div class="kicker">Get In Touch</div>
+    <div class="kicker">Say hello</div>
     <h1>Contact</h1>
-    <p>Let's collaborate on your next story, editorial, or commercial assignment.</p>
+    <p>For commissions, collaborations or licensing — drop me a line and I'll get back to you.</p>
   </header>
-  <div class="contact-container">
-    <div class="contact-form">
+  <div class="contact-wrap">
+    <div>
       <form action="https://formspree.io/f/YOUR_ENDPOINT" method="POST" id="contactForm">
-        <div class="field">
-          <label for="cName">Your Name</label>
-          <input type="text" id="cName" name="name" required placeholder="Elena Vance">
-        </div>
-        <div class="field">
-          <label for="cEmail">Email Address</label>
-          <input type="email" id="cEmail" name="email" required placeholder="elena@example.com">
-        </div>
-        <div class="field">
-          <label for="cMsg">Project Brief</label>
-          <textarea id="cMsg" name="message" required placeholder="Tell me about the location, dates, and creative scope..."></textarea>
-        </div>
-        <button type="submit" class="send-btn">Transmit Inquiry</button>
+        <div class="field"><label>Name</label><input type="text" name="name" required="" placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input type="email" name="email" required="" placeholder="you@email.com"></div>
+        <div class="field"><label>Message</label><textarea name="message" required="" placeholder="Tell me about your project"></textarea></div>
+        <button type="submit" class="send">Send message</button>
       </form>
       <div class="form-note" id="formNote"></div>
     </div>
-    
-    <div class="contact-sidebar">
-      <h4>Direct Email</h4>
-      <a id="contactEmailEl" href="mailto:contact@domain.com">contact@domain.com</a>
-      
-      <h4>Location</h4>
-      <a id="contactLocationEl">Pacific Northwest / Available Globally</a>
+    <div class="contact-side">
+      <h4 style="margin-top:0">Email</h4>
+      <a id="contactEmailEl" href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
+      <h4 style="margin-top:30px">Based in</h4>
+      <a id="contactLocationEl">Your City, Country</a>
     </div>
   </div>
-  <div id="footerContact"></div>
+  <div id="footerContact">
+<footer class="site-footer">
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand"><img class="foot-brand-logo" src="/assets/images/logo-nav.png" alt="Your Brand"></div>
+      <span class="foot-handle">@yourhandle</span>
+    </div>
+    <div class="foot-col">
+      <h4>Navigation</h4>
+      <a href="#home" data-nav="">Home</a>
+      <a href="#portfolio" data-nav="">Portfolio</a>
+      <a href="#contact" data-nav="">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h4>Connect</h4>
+      <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
+      <a href="#contact" data-nav="">Direct Message</a>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>© 2026 Your Name · Studio</span>
+    <span>Your City, Country</span>
+  </div>
+</footer></div>
 </main>
 
-<!-- LIGHTBOX MODAL -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-  <button class="lb-close" id="lbClose" aria-label="Close modal">&times;</button>
-  <button class="lb-nav prev" id="lbPrev" aria-label="Previous frame">&#8249;</button>
+  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+  <button class="lb-nav prev" id="lbPrev" aria-label="Previous">‹</button>
   <div class="lb-stage" id="lbStage"></div>
-  <button class="lb-nav next" id="lbNext" aria-label="Next frame">&#8250;</button>
+  <button class="lb-nav next" id="lbNext" aria-label="Next">›</button>
 </div>
 
 <!-- ===============================================================
-     EASY CONFIGURATION BLOCK
-     Update your assets and copy easily from this single spot
+     CONFIG: EASY SITE MAINTENANCE FOR CLOUDFLARE PAGES
 ================================================================ -->
 <script>
 const CONFIG = {
-  brandName: "Verdant Studio",
-  handle: "@verdant.visuals",
-  email: "hello@verdantstudio.com",
-  location: "Available for commissions globally",
-  footerText: "Verdant Studio · All rights reserved",
+  brandName: "Your Brand",
+  handle: "@yourhandle",
+  email: "hello@yourdomain.com",
+  location: "Your City, Country",
+  footerText: "Your Name · Studio",
 
-  // 1. NAVIGATION LOGO CONFIGURATION
+  // 1. NAV BAR LOGO
   navLogo: {
     logoType: "image", // Options: "image" (wordmark/symbol), "avatar-text", or "text"
     logoSrc: "/assets/images/logo-nav.png", 
     avatarSrc: "/assets/images/avatar.jpg",
-    textLabel: "Verdant"
+    textLabel: "Your Brand" 
   },
 
-  // 2. HERO CENTER LOGO / HEADLINE
+  // 2. HERO CENTER LOGO
   heroLogo: {
     useImage: true, 
-    imageSrc: "/assets/images/logo-hero.png" // Centered signature/mark PNG
+    imageSrc: "/assets/images/logo-hero.png"
   },
-  heroSubtext: "Cinematic Photography & Film",
-  heroReelVideo: "/assets/hero.mp4", // Cloudflare Pages relative path to looping .mp4
 
-  // INTRO PHILOSOPHY
+  heroSubtext: "Photography & Film",
+  heroReelVideo: "/assets/hero.mp4", // Set relative path to .mp4 if you want a looping background video
+
+  // Intro section
   introBgImage: "/assets/images/intro-bg.jpg",
-  introEyebrow: "The Philosophy",
-  introHeading: "In pursuit of honest light and timeless stillness.",
-  introText: "Documenting organic transitions between wilderness, architectural geometry, and human connection.",
-
-  // FEATURE IMAGES ON HOMEPAGE
-  featPortfolioImg: "/assets/images/feat-portfolio.jpg",
-  featContactImg: "/assets/images/feat-contact.jpg",
-
-  // SOCIAL LINKS
+  introEyebrow: "Photography & Film",
+  introHeading: "everything matters, nothing's important",
+  introText: "Capturing visual moments and telling stories through cinematic composition.",
+  
+  // Socials
   socials: [
     { name: 'Instagram', url: 'https://instagram.com/', iconPath: 'M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17-.21-.55-.47-.94-.88-1.35-.41-.41-.8-.67-1.35-.88-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07zm0 2.76a5.46 5.46 0 110 10.92 5.46 5.46 0 010-10.92zm0 9a3.54 3.54 0 100-7.08 3.54 3.54 0 000 7.08zm5.68-9.15a1.27 1.27 0 11-2.55 0 1.27 1.27 0 012.55 0z' }
   ],
 
-  // PORTFOLIO ARCHIVE CATEGORIES & IMAGES
+  // Home Features (Streamlined for Portfolio & Contact)
+  features: [
+    { title: "Portfolio", label: "Selected Work", desc: "Browse full collections across landscape, street, and creative photography.", img: "/assets/images/feat-portfolio.jpg", link: "#portfolio" },
+    { title: "Get in Touch", label: "Commission & Licensing", desc: "Available for commercial shoots, editorial assignments, and creative collaborations.", img: "/assets/images/feat-contact.jpg", link: "#contact", reverse: true }
+  ],
+
+  // Portfolio Categories & Images
   portfolioCategories: [
-    { id: 'earth', name: 'Earth & Fog', desc: 'Ancient ridges, canopy shadows, and coastal atmosphere.' },
-    { id: 'urban', name: 'Urban Monoliths', desc: 'Concrete geometry, nocturnal light, and modern solitude.' },
-    { id: 'portraits', name: 'Intimate Frames', desc: 'Natural light character studies and fleeting glances.' }
+    { id: 'landscape', name: 'Landscape', desc: 'Travel and landscape, from mountaintops to coastlines.' },
+    { id: 'street', name: 'Street', desc: 'Light, people, and fleeting moments in the city.' },
+    { id: 'creative', name: 'Creative', desc: 'Experiments, concepts, and personal fine-art work.' }
   ],
   portfolioMedia: [
-    { cat: 'earth', src: '/assets/images/portfolio/earth-01.jpg', title: 'Mountain Valley Mist' },
-    { cat: 'earth', src: '/assets/images/portfolio/earth-02.jpg', title: 'Evergreen Ridge' },
-    { cat: 'urban', src: '/assets/images/portfolio/urban-01.jpg', title: 'Dusk Reflections' },
-    { cat: 'urban', src: '/assets/images/portfolio/urban-02.jpg', title: 'Subway Light Study' },
-    { cat: 'portraits', src: '/assets/images/portfolio/portrait-01.jpg', title: 'Window Radiance' }
+    { cat: 'landscape', src: '/assets/images/portfolio/landscape-01.jpg', title: 'Mountain Mist' },
+    { cat: 'landscape', src: '/assets/images/portfolio/landscape-02.jpg', title: 'Coastal Fog' },
+    { cat: 'street', src: '/assets/images/portfolio/street-01.jpg', title: 'Rain in Neon' },
+    { cat: 'street', src: '/assets/images/portfolio/street-02.jpg', title: 'Alleyway Light' },
+    { cat: 'creative', src: '/assets/images/portfolio/creative-01.jpg', title: 'Shadow Study' }
   ]
 };
 
 /* -------------------------------------------------------------
-   RENDER & INTERACTIVE ENGINE
+   RENDER LOGIC
 ------------------------------------------------------------- */
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 
-// 1. Render Navigation Logo
+// 1. Render Nav Logo
 const navBrandEl = $('#brandNavEl');
 if (CONFIG.navLogo.logoType === 'image') {
   navBrandEl.innerHTML = `<img class="brand-logo-img" src="${CONFIG.navLogo.logoSrc}" alt="${CONFIG.brandName}">`;
@@ -974,15 +517,15 @@ if (CONFIG.navLogo.logoType === 'image') {
   navBrandEl.innerHTML = `<span class="brand-text">${CONFIG.brandName}</span>`;
 }
 
-// 2. Render Hero Brand Mark
-const heroBrandEl = $('#heroBrandContainer');
+// 2. Render Hero Brand
+const heroBrandEl = $('#heroHeroBrandEl');
 if (CONFIG.heroLogo.useImage && CONFIG.heroLogo.imageSrc) {
   heroBrandEl.innerHTML = `<img class="hero-mark" src="${CONFIG.heroLogo.imageSrc}" alt="${CONFIG.brandName}">`;
 } else {
-  heroBrandEl.innerHTML = `<h1 style="font-family:var(--serif);font-weight:400;font-size:clamp(50px,11vw,110px);line-height:1;margin:0;">${CONFIG.brandName}</h1>`;
+  heroBrandEl.innerHTML = `<h1 style="font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(52px,12vw,120px);line-height:1;margin:0;">${CONFIG.brandName}</h1>`;
 }
 
-// 3. Inject Texts & Callouts
+// 3. Render Hero & Intro Texts
 $('#heroSubEl').textContent = CONFIG.heroSubtext;
 $('#introEyebrowEl').textContent = CONFIG.introEyebrow;
 $('#introHeadingEl').textContent = CONFIG.introHeading;
@@ -992,27 +535,36 @@ $('#contactEmailEl').href = `mailto:${CONFIG.email}`;
 $('#contactEmailEl').textContent = CONFIG.email;
 $('#contactLocationEl').textContent = CONFIG.location;
 
-// Render Bento Featured Images
-$('#featPortfolioImg').src = CONFIG.featPortfolioImg;
-$('#featContactImg').src = CONFIG.featContactImg;
-
-// Social Icons
+// Render Social Links
 const socEl = $('#socialLinksEl');
 CONFIG.socials.forEach(s => {
-  const a = document.createElement('a');
-  a.className = 'social';
-  a.href = s.url;
-  a.target = '_blank';
-  a.rel = 'noopener';
-  a.setAttribute('aria-label', s.name);
+  const a = document.createElement('a'); a.className='social'; a.href=s.url; a.target='_blank'; a.rel='noopener'; a.setAttribute('aria-label', s.name);
   a.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="${s.iconPath}"/></svg>`;
   socEl.appendChild(a);
 });
 
-// Render Global Footers
+// Render Features
+const featEl = $('#homeFeatures');
+CONFIG.features.forEach((f, i) => {
+  const sec = document.createElement('section'); sec.className = `feature reveal ${f.reverse ? 'reverse' : ''}`;
+  sec.innerHTML = `
+    <a class="feature-media" href="${f.link}" data-nav>
+      <div class="ph h${(i%3)+1}" data-label="${f.title}"></div>
+      <img class="feature-img" src="${f.img}" alt="${f.title}" onerror="this.style.display='none'">
+    </a>
+    <div class="feature-body">
+      <span class="feature-label">${f.label}</span>
+      <h3>${f.title}</h3>
+      <p>${f.desc}</p>
+      <a class="cta" href="${f.link}" data-nav>Explore</a>
+    </div>`;
+  featEl.appendChild(sec);
+});
+
+// Render Footers
 const footerBrandHTML = CONFIG.navLogo.logoType === 'image' 
   ? `<img class="foot-brand-logo" src="${CONFIG.navLogo.logoSrc}" alt="${CONFIG.brandName}">`
-  : `<span class="brand-text" style="font-size:22px;">${CONFIG.brandName}</span>`;
+  : `<span class="brand-text" style="font-size:24px;">${CONFIG.brandName}</span>`;
 
 const footerHTML = `
 <footer class="site-footer">
@@ -1030,7 +582,7 @@ const footerHTML = `
     <div class="foot-col">
       <h4>Connect</h4>
       <a href="mailto:${CONFIG.email}">${CONFIG.email}</a>
-      <a href="#contact" data-nav>Direct Inquiry</a>
+      <a href="#contact" data-nav>Direct Message</a>
     </div>
   </div>
   <div class="foot-base">
@@ -1040,153 +592,91 @@ const footerHTML = `
 </footer>`;
 $$('[id^="footer"]').forEach(f => f.innerHTML = footerHTML);
 
-// Portfolio Archive Construction
+// Portfolio Gallery
 const tabs = $('#pfTabs'), gal = $('#pfGallery');
 let galleries = {};
 CONFIG.portfolioCategories.forEach((c, i) => {
   galleries[c.id] = CONFIG.portfolioMedia.filter(m => m.cat === c.id);
-  if (galleries[c.id].length === 0) {
-    galleries[c.id] = Array.from({ length: 4 }, (_, k) => ({ cat: c.id, type: 'placeholder', title: c.name + ' ' + (k + 1) }));
+  if(galleries[c.id].length === 0) {
+    galleries[c.id] = Array.from({length: 4}, (_, k) => ({ cat: c.id, type: 'placeholder', title: c.name + ' ' + (k+1) }));
   }
-
-  const b = document.createElement('button');
-  b.className = 'pf-tab' + (i === 0 ? ' active' : '');
-  b.textContent = c.name;
-  b.dataset.cat = c.id;
+  const b = document.createElement('button'); b.className = 'pf-tab' + (i===0?' active':''); b.textContent = c.name; b.dataset.cat = c.id;
   tabs.appendChild(b);
-
-  const set = document.createElement('div');
-  set.className = 'pf-set' + (i === 0 ? ' active' : '');
-  set.id = 'set-' + c.id;
-  set.innerHTML = `
-    <div class="pf-sectionhead">
-      <div class="pf-sectionhead-inner">
-        <h2>${c.name}</h2>
-        <p>${c.desc}</p>
-      </div>
-    </div>
-    <div class="pf-grid"></div>
-  `;
-
+  const set = document.createElement('div'); set.className = 'pf-set' + (i===0?' active':''); set.id = 'set-'+c.id;
+  set.innerHTML = `<div class="pf-sectionhead"><div class="pf-sectionhead-inner"><span class="eyebrow">Portfolio</span><h2>${c.name}</h2><p>${c.desc}</p></div></div><div class="pf-grid"></div>`;
   const grid = set.querySelector('.pf-grid');
   galleries[c.id].forEach((item, k) => {
-    const el = document.createElement('div');
-    el.className = 'pf-item';
-    const wrap = document.createElement('div');
-    wrap.className = 'media-tile';
-    const img = document.createElement('img');
-    img.src = item.src;
-    img.loading = 'lazy';
-    img.alt = item.title || c.name;
-    img.onerror = () => {
-      img.style.display = 'none';
-      wrap.innerHTML = `<div class="ph" style="aspect-ratio:4/5;" data-label="${item.title}"></div>`;
-    };
+    const el = document.createElement('div'); el.className = 'pf-item';
+    const wrap = document.createElement('div'); wrap.className = 'media-tile natural';
+    const img = document.createElement('img'); img.src = item.src; img.loading = 'lazy';
+    img.onload = () => img.classList.add('loaded');
+    img.onerror = () => { img.style.display='none'; wrap.innerHTML = `<div class="ph h2" style="aspect-ratio:4/5;" data-label="${item.title}"></div>`; };
     wrap.appendChild(img);
     el.appendChild(wrap);
     el.addEventListener('click', () => openLB(c.id, k));
     grid.appendChild(el);
   });
-  set.appendChild(grid);
-  gal.appendChild(set);
+  set.appendChild(grid); gal.appendChild(set);
 });
-
 tabs.addEventListener('click', e => {
-  const b = e.target.closest('.pf-tab');
-  if (!b) return;
-  $$('.pf-tab').forEach(t => t.classList.toggle('active', t === b));$$
-('.pf-set').forEach(s => s.classList.toggle('active', s.id === 'set-' + b.dataset.cat));
+  const b = e.target.closest('.pf-tab'); if(!b) return;
+  $$('.pf-tab').forEach(t => t.classList.toggle('active', t===b));$$
+('.pf-set').forEach(s => s.classList.toggle('active', s.id === 'set-'+b.dataset.cat));
 });
 
-// Lightbox Engine
-const lb = $('#lightbox'), lbStage = $('#lbStage');
-let lbKey = null, lbIdx = 0;
-
-function openLB(key, idx) {
-  lbKey = key; lbIdx = idx;
-  renderLB();
-  lb.classList.add('open');
-}
+// Lightbox
+const lb = $('#lightbox'), lbStage = $('#lbStage'); let lbKey = null, lbIdx = 0;
+function openLB(key, idx) { lbKey = key; lbIdx = idx; renderLB(); lb.classList.add('open'); }
 function renderLB() {
-  const item = galleries[lbKey][lbIdx];
-  lbStage.innerHTML = '';
-  const img = document.createElement('img');
-  img.src = item.src;
-  img.className = 'lb-media';
-  img.alt = item.title || 'Image preview';
-  img.onerror = () => {
-    lbStage.innerHTML = `<div class="ph" style="width:min(90vw,900px);aspect-ratio:3/2" data-label="${item.title}"></div>`;
-  };
-  lbStage.appendChild(img);
+  const item = galleries[lbKey][lbIdx]; lbStage.innerHTML = '';
+  const img = document.createElement('img'); img.src = item.src; img.className = 'lb-media'; lbStage.appendChild(img);
 }
-function closeLB() {
-  lb.classList.remove('open');
-  lbStage.innerHTML = '';
-}
+function closeLB() { lb.classList.remove('open'); lbStage.innerHTML = ''; }
 $('#lbClose').onclick = closeLB;
-$('#lbPrev').onclick = e => {
-  e.stopPropagation();
-  lbIdx = (lbIdx - 1 + galleries[lbKey].length) % galleries[lbKey].length;
-  renderLB();
-};
-$('#lbNext').onclick = e => {
-  e.stopPropagation();
-  lbIdx = (lbIdx + 1) % galleries[lbKey].length;
-  renderLB();
-};
-lb.onclick = e => { if (e.target === lb) closeLB(); };
+$('#lbPrev').onclick = e => { e.stopPropagation(); lbIdx = (lbIdx - 1 + galleries[lbKey].length) % galleries[lbKey].length; renderLB(); };
+$('#lbNext').onclick = e => { e.stopPropagation(); lbIdx = (lbIdx + 1) % galleries[lbKey].length; renderLB(); };
+lb.onclick = e => { if(e.target === lb) closeLB(); };
 
-// Form Handling
+// Form override
 $('#contactForm').addEventListener('submit', (e) => {
-  if ($('#contactForm').action.includes("YOUR_ENDPOINT")) {
+  if($('#contactForm').action.includes("YOUR_ENDPOINT")) {
     e.preventDefault();
-    $('#formNote').textContent = "Form is in demo mode. Please set your Formspree/worker endpoint in the HTML.";
-    $('#formNote').style.color = "var(--accent)";
+    $('#formNote').textContent = "Form is in demo mode. Please update YOUR_ENDPOINT in the HTML.";
+    $('#formNote').style.color = "var(--gold)";
   }
 });
 
-// Single Page Routing
+// Routing
 const pages = $$('.page'), navA =$$('#navLinks a');
 function go(id) {
-  if (!document.getElementById(id)) id = 'home';
+  if(!document.getElementById(id)) id = 'home';
   pages.forEach(p => p.classList.toggle('active', p.id === id));
-  navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
-  window.scrollTo(0, 0);
+  navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+id));
+  window.scrollTo(0,0);
   $('#navToggle').classList.remove('open');
   $('#navLinks').classList.remove('open');
   $('#nav').classList.toggle('solid', id !== 'home');
 }
-
 document.addEventListener('click', e => {
-  const el = e.target.closest('[data-nav]');
-  if (!el) return;
+  const el = e.target.closest('[data-nav]'); if(!el) return;
   e.preventDefault();
   const id = (el.getAttribute('href') || '').replace('#', '') || 'home';
-  history.pushState(null, '', '#' + id);
-  go(id);
+  history.pushState(null, '', '#'+id); go(id);
 });
-
 window.addEventListener('popstate', () => go(location.hash.replace('#', '') || 'home'));
-$('#navToggle').onclick = () => {
-  $('#navToggle').classList.toggle('open');
-  $('#navLinks').classList.toggle('open');
-};
+$('#navToggle').onclick = () => { $('#navToggle').classList.toggle('open'); $('#navLinks').classList.toggle('open'); };
 
-// Intersection Observer for Smooth Scroll Reveals
+// Reveal on Scroll
 document.querySelectorAll('.reveal').forEach(e => {
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(entries => {
-      entries.forEach(ent => {
-        if (ent.isIntersecting) ent.target.classList.add('in');
-      });
-    }, { threshold: 0.12 }).observe(e);
-  } else {
-    e.classList.add('in');
-  }
+      entries.forEach(ent => { if(ent.isIntersecting) ent.target.classList.add('in'); });
+    }, {threshold: 0.1}).observe(e);
+  } else { e.classList.add('in'); }
 });
 
-// Background Video Initialization
-if (CONFIG.heroReelVideo) {
+// Video reel initialization (optional)
+if(CONFIG.heroReelVideo) {
   const v = document.createElement('video');
   v.className = 'hero-video-el';
   v.muted = true; v.autoplay = true; v.loop = true; v.playsInline = true;
@@ -1194,7 +684,6 @@ if (CONFIG.heroReelVideo) {
   $('#heroMedia').appendChild(v);
 }
 
-// Initialize
 go(location.hash.replace('#', '') || 'home');
 </script>
 </body>
